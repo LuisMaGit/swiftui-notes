@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Notes/Notes.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NotesCore/NotesCore.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NotesCoreUI/NotesCoreUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NotesFeatures/NotesFeatures.xcodeproj">
+   </FileRef>
+</Workspace>

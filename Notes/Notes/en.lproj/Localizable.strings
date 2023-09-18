@@ -1,0 +1,5 @@
+//reusable
+"searchbar.hint" = "Search in your notes";
+//notes
+"notes.header.title" = "Your notes";
+"notes.header.items-selected" = "Selected notes: ";
