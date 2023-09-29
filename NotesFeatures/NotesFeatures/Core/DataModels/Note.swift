@@ -1,24 +1,28 @@
 
 import Foundation
+import NotesCore
 
-public struct Note {
-    var id: Int
-    var title: String
-    var content: String
-    var color: String
-    var dateCreation: Date?
+public struct Note : Equatable {
+    let id: Int
+    let title: String
+    let content: String
+    let shortContent : String
+    let color: String
+    let creationDate : DateVisualizer?
 
     public init(
         id: Int = -1,
         title: String = "",
         content: String = "",
+        shortContent: String = "",
         color: String = "",
-        dateCreation: Date? = nil
+        creationDate: DateVisualizer? = nil
     ) {
         self.id = id
         self.title = title
         self.content = content
+        self.shortContent = shortContent
         self.color = color
-        self.dateCreation = dateCreation
+        self.creationDate = creationDate
     }
 }

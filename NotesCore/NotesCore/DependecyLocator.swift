@@ -1,21 +1,23 @@
 import Foundation
 
-public func sqlManagerServiceProvider() -> SqlManagerService {
+public func sqlManagerServiceProvider() -> ISqlManagerService {
     return SqlManagerService(
         fileManagerService: fileMangerServiceProvider()
     )
 }
 
-public func fileMangerServiceProvider() -> FileManagerService {
+public func fileMangerServiceProvider() -> IFileManagerService {
     return FileManagerService()
 }
 
-public func timeServiceProvider() -> TimeService {
-    return TimeService()
+public func timeServiceProvider() -> ITimeService {
+    return TimeService(now: Date.now)
 }
 
-public func paginationServiceProvider() -> PaginationService {
+public func paginationServiceProvider() -> IPaginationService {
     return PaginationService()
 }
 
-
+public func stringManagerServiceProvider() -> IStringManagerService {
+    return StringMangerService()
+}

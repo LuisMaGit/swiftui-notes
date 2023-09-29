@@ -1,11 +1,11 @@
 import Foundation
 
-public class StringMangerService {
-    public init() {}
+class StringMangerService: IStringManagerService {
+    init() {}
 
     public func getFirstChars(
         of: String,
-        amount: Int = 100
+        amount: Int 
     ) -> String {
         if of.count <= amount {
             return of

@@ -1,8 +1,8 @@
-
 import Foundation
 
-public class FileManagerService {
+class FileManagerService: IFileManagerService {
     private let fileManager = FileManager.default
+
     func documentsPath() -> URL {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }

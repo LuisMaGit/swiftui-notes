@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D6126FE72AC5DD35005CE9E3 /* NotesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */; };
+		D6126FE82AC5DD35005CE9E3 /* NotesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D6419F192AAB473400C71902 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6419F182AAB473400C71902 /* Poppins-Black.ttf */; };
 		D64868B62A9E3806005D9A7E /* NText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64868B52A9E3806005D9A7E /* NText.swift */; };
 		D64868B82A9E3BB6005D9A7E /* NConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64868B72A9E3BB6005D9A7E /* NConstants.swift */; };
@@ -17,15 +19,32 @@
 		D64D62882AA1ECDA00D310D6 /* RippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D62872AA1ECDA00D310D6 /* RippleButton.swift */; };
 		D64D628D2AA2116600D310D6 /* NSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D628C2AA2116600D310D6 /* NSearchField.swift */; };
 		D68D1EBC2AA6263000A864BA /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D1EBB2AA6263000A864BA /* ChipButton.swift */; };
+		D6BBCF302AC5A649001F7233 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BBCF2F2AC5A649001F7233 /* NLoader.swift */; };
+		D6C343502AC72D5B001D7BFD /* NotesCoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C3434F2AC72D5B001D7BFD /* NotesCoreUtils.swift */; };
 		D6E7B6DE2A98F415008706F8 /* NotesCoreUI.h in Headers */ = {isa = PBXBuildFile; fileRef = D6E7B6DD2A98F415008706F8 /* NotesCoreUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6E7B6EC2A98F53A008706F8 /* NoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6EB2A98F53A008706F8 /* NoteCard.swift */; };
-		D6E7B6F12A98F66C008706F8 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6F02A98F66C008706F8 /* UIHelper.swift */; };
+		D6E7B6F12A98F66C008706F8 /* CoreUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6F02A98F66C008706F8 /* CoreUIUtils.swift */; };
 		D6E7B6F82A98FB34008706F8 /* NColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6F72A98FB34008706F8 /* NColors.swift */; };
 		D6E7B6F92A98FD61008706F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E7B6F42A98F899008706F8 /* Assets.xcassets */; };
 		D6E7B6FB2A98FFC5008706F8 /* NotesCoreUIContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6FA2A98FFC5008706F8 /* NotesCoreUIContracts.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D6126FE92AC5DD35005CE9E3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D6126FE82AC5DD35005CE9E3 /* NotesCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6419F182AAB473400C71902 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
 		D64868B52A9E3806005D9A7E /* NText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NText.swift; sourceTree = "<group>"; };
 		D64868B72A9E3BB6005D9A7E /* NConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NConstants.swift; sourceTree = "<group>"; };
@@ -37,10 +56,12 @@
 		D64D62872AA1ECDA00D310D6 /* RippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleButton.swift; sourceTree = "<group>"; };
 		D64D628C2AA2116600D310D6 /* NSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSearchField.swift; sourceTree = "<group>"; };
 		D68D1EBB2AA6263000A864BA /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
+		D6BBCF2F2AC5A649001F7233 /* NLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
+		D6C3434F2AC72D5B001D7BFD /* NotesCoreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoreUtils.swift; sourceTree = "<group>"; };
 		D6E7B6DA2A98F415008706F8 /* NotesCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NotesCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E7B6DD2A98F415008706F8 /* NotesCoreUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotesCoreUI.h; sourceTree = "<group>"; };
 		D6E7B6EB2A98F53A008706F8 /* NoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCard.swift; sourceTree = "<group>"; };
-		D6E7B6F02A98F66C008706F8 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		D6E7B6F02A98F66C008706F8 /* CoreUIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUIUtils.swift; sourceTree = "<group>"; };
 		D6E7B6F42A98F899008706F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6E7B6F72A98FB34008706F8 /* NColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NColors.swift; sourceTree = "<group>"; };
 		D6E7B6FA2A98FFC5008706F8 /* NotesCoreUIContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoreUIContracts.swift; sourceTree = "<group>"; };
@@ -51,12 +72,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6126FE72AC5DD35005CE9E3 /* NotesCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6126FE52AC5DD35005CE9E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D64868BA2A9E4226005D9A7E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +102,7 @@
 			children = (
 				D6E7B6DC2A98F415008706F8 /* NotesCoreUI */,
 				D6E7B6DB2A98F415008706F8 /* Products */,
+				D6126FE52AC5DD35005CE9E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,7 +123,7 @@
 				D64868C52A9E43D9005D9A7E /* Info.plist */,
 				D6E7B6DD2A98F415008706F8 /* NotesCoreUI.h */,
 				D6E7B6F62A98FB23008706F8 /* Theme */,
-				D6E7B6EF2A98F641008706F8 /* Helpers */,
+				D6E7B6EF2A98F641008706F8 /* Utils */,
 				D6E7B6E92A98F497008706F8 /* Components */,
 			);
 			path = NotesCoreUI;
@@ -107,16 +138,18 @@
 				D64D62852AA1E91B00D310D6 /* NIcons.swift */,
 				D64D628C2AA2116600D310D6 /* NSearchField.swift */,
 				D68D1EBB2AA6263000A864BA /* ChipButton.swift */,
+				D6BBCF2F2AC5A649001F7233 /* NLoader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		D6E7B6EF2A98F641008706F8 /* Helpers */ = {
+		D6E7B6EF2A98F641008706F8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D6E7B6F02A98F66C008706F8 /* UIHelper.swift */,
+				D6E7B6F02A98F66C008706F8 /* CoreUIUtils.swift */,
+				D6C3434F2AC72D5B001D7BFD /* NotesCoreUtils.swift */,
 			);
-			path = Helpers;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D6E7B6F62A98FB23008706F8 /* Theme */ = {
@@ -151,6 +184,7 @@
 				D6E7B6D62A98F415008706F8 /* Sources */,
 				D6E7B6D72A98F415008706F8 /* Frameworks */,
 				D6E7B6D82A98F415008706F8 /* Resources */,
+				D6126FE92AC5DD35005CE9E3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +249,7 @@
 			files = (
 				D64D62882AA1ECDA00D310D6 /* RippleButton.swift in Sources */,
 				D6E7B6EC2A98F53A008706F8 /* NoteCard.swift in Sources */,
+				D6C343502AC72D5B001D7BFD /* NotesCoreUtils.swift in Sources */,
 				D64D628D2AA2116600D310D6 /* NSearchField.swift in Sources */,
 				D64D62862AA1E91B00D310D6 /* NIcons.swift in Sources */,
 				D64868B82A9E3BB6005D9A7E /* NConstants.swift in Sources */,
@@ -222,7 +257,8 @@
 				D64D627E2A9F34DC00D310D6 /* NotesCoreUI.swift in Sources */,
 				D6E7B6F82A98FB34008706F8 /* NColors.swift in Sources */,
 				D6E7B6FB2A98FFC5008706F8 /* NotesCoreUIContracts.swift in Sources */,
-				D6E7B6F12A98F66C008706F8 /* UIHelper.swift in Sources */,
+				D6BBCF302AC5A649001F7233 /* NLoader.swift in Sources */,
+				D6E7B6F12A98F66C008706F8 /* CoreUIUtils.swift in Sources */,
 				D64868B62A9E3806005D9A7E /* NText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

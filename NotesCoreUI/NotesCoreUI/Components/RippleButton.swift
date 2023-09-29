@@ -1,6 +1,6 @@
 import SwiftUI
 
-public enum RippleButtonStyles {
+public struct RippleButtonStyles {
     public static let paddingTransparent = NSpace.k8
     public static let colorTransparentRipple = NColors.backgroundLighter
     public static let opacityRippleColor = 0.7

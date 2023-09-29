@@ -8,10 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		D61BF0B62AB3AA0200E206F2 /* StringManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61BF0B52AB3AA0200E206F2 /* StringManagerService.swift */; };
-		D61BF0BF2AB3B0E300E206F2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */; platformFilter = ios; };
-		D61BF0C02AB3B0E300E206F2 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D61BF0C92AB44E5200E206F2 /* StringManagerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61BF0C82AB44E5200E206F2 /* StringManagerServiceTests.swift */; };
 		D61BF0CA2AB44E5200E206F2 /* NotesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EF46262AB05A3C00A84AB3 /* NotesCore.framework */; };
+		D65EF75C2ABCDE52007400F9 /* ISqlManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF75B2ABCDE52007400F9 /* ISqlManagerService.swift */; };
+		D65EF75F2ABCDE8A007400F9 /* IFileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF75E2ABCDE8A007400F9 /* IFileManagerService.swift */; };
+		D65EF7622ABCDF1E007400F9 /* ITimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF7612ABCDF1E007400F9 /* ITimeService.swift */; };
+		D65EF7642ABCDF47007400F9 /* TimeServiceContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF7632ABCDF47007400F9 /* TimeServiceContracts.swift */; };
+		D65EF7672ABCE0FC007400F9 /* IPaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF7662ABCE0FC007400F9 /* IPaginationService.swift */; };
+		D65EF7692ABCE11C007400F9 /* PaginationServiceContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF7682ABCE11C007400F9 /* PaginationServiceContracts.swift */; };
+		D65EF76C2ABCE4D6007400F9 /* IStringManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF76B2ABCE4D6007400F9 /* IStringManagerService.swift */; };
+		D65EF76E2ABCE735007400F9 /* StringManagerServiceContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF76D2ABCE735007400F9 /* StringManagerServiceContracts.swift */; };
+		D669CF542AB9B213001473D9 /* DateVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669CF532AB9B213001473D9 /* DateVisualizer.swift */; };
+		D669CF592AB9BCD6001473D9 /* TimeServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669CF582AB9BCD6001473D9 /* TimeServiceTest.swift */; };
+		D68D30512ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */; };
+		D68D30522ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */; };
+		D68D30532ABF17E400EED4BF /* TimeServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */; };
+		D68D30542ABF17E400EED4BF /* TimeServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */; };
+		D68D30552ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */; };
+		D68D30562ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */; };
+		D68D30572ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304F2ABF17E400EED4BF /* StringManagerServiceMock.swift */; };
+		D68D30582ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304F2ABF17E400EED4BF /* StringManagerServiceMock.swift */; };
+		D68D30592ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D30502ABF17E400EED4BF /* PaginationServiceMock.swift */; };
+		D68D305A2ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D30502ABF17E400EED4BF /* PaginationServiceMock.swift */; };
+		D694045B2AB893AA00E4C203 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (Weak, ); }; };
+		D694045C2AB893AA00E4C203 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D6E44A362AB1BA5900212D73 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E44A352AB1BA5900212D73 /* Pagination.swift */; };
 		D6EC3AB62AB1C52E00C34312 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC3AB52AB1C52E00C34312 /* TimeService.swift */; };
 		D6EC3AB82AB1C78A00C34312 /* PaginationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC3AB72AB1C78A00C34312 /* PaginationService.swift */; };
@@ -35,13 +55,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D61BF0C12AB3B0E300E206F2 /* Embed Frameworks */ = {
+		D694045D2AB893AA00E4C203 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D61BF0C02AB3B0E300E206F2 /* XCTest.framework in Embed Frameworks */,
+				D694045C2AB893AA00E4C203 /* XCTest.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +73,21 @@
 		D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D61BF0C62AB44E5200E206F2 /* NotesCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61BF0C82AB44E5200E206F2 /* StringManagerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManagerServiceTests.swift; sourceTree = "<group>"; };
+		D65EF75B2ABCDE52007400F9 /* ISqlManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISqlManagerService.swift; sourceTree = "<group>"; };
+		D65EF75E2ABCDE8A007400F9 /* IFileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFileManagerService.swift; sourceTree = "<group>"; };
+		D65EF7612ABCDF1E007400F9 /* ITimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITimeService.swift; sourceTree = "<group>"; };
+		D65EF7632ABCDF47007400F9 /* TimeServiceContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeServiceContracts.swift; sourceTree = "<group>"; };
+		D65EF7662ABCE0FC007400F9 /* IPaginationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPaginationService.swift; sourceTree = "<group>"; };
+		D65EF7682ABCE11C007400F9 /* PaginationServiceContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationServiceContracts.swift; sourceTree = "<group>"; };
+		D65EF76B2ABCE4D6007400F9 /* IStringManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStringManagerService.swift; sourceTree = "<group>"; };
+		D65EF76D2ABCE735007400F9 /* StringManagerServiceContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManagerServiceContracts.swift; sourceTree = "<group>"; };
+		D669CF532AB9B213001473D9 /* DateVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVisualizer.swift; sourceTree = "<group>"; };
+		D669CF582AB9BCD6001473D9 /* TimeServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeServiceTest.swift; sourceTree = "<group>"; };
+		D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqlManagerServiceMock.swift; sourceTree = "<group>"; };
+		D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeServiceMock.swift; sourceTree = "<group>"; };
+		D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerServiceMock.swift; sourceTree = "<group>"; };
+		D68D304F2ABF17E400EED4BF /* StringManagerServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringManagerServiceMock.swift; sourceTree = "<group>"; };
+		D68D30502ABF17E400EED4BF /* PaginationServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationServiceMock.swift; sourceTree = "<group>"; };
 		D6E44A352AB1BA5900212D73 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		D6EC3AB52AB1C52E00C34312 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
 		D6EC3AB72AB1C78A00C34312 /* PaginationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationService.swift; sourceTree = "<group>"; };
@@ -80,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D61BF0BF2AB3B0E300E206F2 /* XCTest.framework in Frameworks */,
+				D694045B2AB893AA00E4C203 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,14 +134,75 @@
 			isa = PBXGroup;
 			children = (
 				D61BF0C82AB44E5200E206F2 /* StringManagerServiceTests.swift */,
+				D669CF582AB9BCD6001473D9 /* TimeServiceTest.swift */,
 			);
 			path = NotesCoreTests;
+			sourceTree = "<group>";
+		};
+		D65EF75D2ABCDE7B007400F9 /* FileManagerService */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF75E2ABCDE8A007400F9 /* IFileManagerService.swift */,
+				D6EF468A2AB06EA300A84AB3 /* FileManagerService.swift */,
+			);
+			path = FileManagerService;
+			sourceTree = "<group>";
+		};
+		D65EF7602ABCDF0F007400F9 /* TimeService */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF7612ABCDF1E007400F9 /* ITimeService.swift */,
+				D6EC3AB52AB1C52E00C34312 /* TimeService.swift */,
+				D65EF7632ABCDF47007400F9 /* TimeServiceContracts.swift */,
+			);
+			path = TimeService;
+			sourceTree = "<group>";
+		};
+		D65EF7652ABCE0EF007400F9 /* PaginationService */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF7662ABCE0FC007400F9 /* IPaginationService.swift */,
+				D6EC3AB72AB1C78A00C34312 /* PaginationService.swift */,
+				D65EF7682ABCE11C007400F9 /* PaginationServiceContracts.swift */,
+			);
+			path = PaginationService;
+			sourceTree = "<group>";
+		};
+		D65EF76A2ABCE4C5007400F9 /* StringManagerService */ = {
+			isa = PBXGroup;
+			children = (
+				D65EF76B2ABCE4D6007400F9 /* IStringManagerService.swift */,
+				D61BF0B52AB3AA0200E206F2 /* StringManagerService.swift */,
+				D65EF76D2ABCE735007400F9 /* StringManagerServiceContracts.swift */,
+			);
+			path = StringManagerService;
+			sourceTree = "<group>";
+		};
+		D68D302E2ABF057C00EED4BF /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D68D304F2ABF17E400EED4BF /* StringManagerServiceMock.swift */,
+				D68D30502ABF17E400EED4BF /* PaginationServiceMock.swift */,
+				D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */,
+				D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */,
+				D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		D6D4CE182ABE4A4C00F1B7B8 /* NotesCoreTestsUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D68D302E2ABF057C00EED4BF /* Mocks */,
+			);
+			path = NotesCoreTestsUtils;
 			sourceTree = "<group>";
 		};
 		D6E44A302AB0FDDD00212D73 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
 				D6E44A352AB1BA5900212D73 /* Pagination.swift */,
+				D669CF532AB9B213001473D9 /* DateVisualizer.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -117,6 +213,7 @@
 				D6EC3ABB2AB1FDC600C34312 /* PlaygroundNotesCore.playground */,
 				D6EF46282AB05A3C00A84AB3 /* NotesCore */,
 				D61BF0C72AB44E5200E206F2 /* NotesCoreTests */,
+				D6D4CE182ABE4A4C00F1B7B8 /* NotesCoreTestsUtils */,
 				D6EF46272AB05A3C00A84AB3 /* Products */,
 				D61BF0BA2AB3AF5C00E206F2 /* Frameworks */,
 			);
@@ -146,23 +243,24 @@
 		D6EF467D2AB05FE600A84AB3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D6EF467E2AB05FF400A84AB3 /* SqlServices */,
+				D65EF76A2ABCE4C5007400F9 /* StringManagerService */,
+				D65EF7652ABCE0EF007400F9 /* PaginationService */,
+				D65EF7602ABCDF0F007400F9 /* TimeService */,
+				D65EF75D2ABCDE7B007400F9 /* FileManagerService */,
+				D6EF467E2AB05FF400A84AB3 /* SqlManagerService */,
 				D6EF46862AB062C600A84AB3 /* LoggerService.swift */,
-				D6EF468A2AB06EA300A84AB3 /* FileManagerService.swift */,
-				D6EC3AB52AB1C52E00C34312 /* TimeService.swift */,
-				D6EC3AB72AB1C78A00C34312 /* PaginationService.swift */,
-				D61BF0B52AB3AA0200E206F2 /* StringManagerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		D6EF467E2AB05FF400A84AB3 /* SqlServices */ = {
+		D6EF467E2AB05FF400A84AB3 /* SqlManagerService */ = {
 			isa = PBXGroup;
 			children = (
+				D65EF75B2ABCDE52007400F9 /* ISqlManagerService.swift */,
 				D6EF467F2AB0601E00A84AB3 /* SqlManagerService.swift */,
 				D6EF46842AB0612000A84AB3 /* SqlManagerContracts.swift */,
 			);
-			path = SqlServices;
+			path = SqlManagerService;
 			sourceTree = "<group>";
 		};
 		D6EF468E2AB0777100A84AB3 /* Utils */ = {
@@ -213,13 +311,15 @@
 				D6EF46222AB05A3C00A84AB3 /* Sources */,
 				D6EF46232AB05A3C00A84AB3 /* Frameworks */,
 				D6EF46242AB05A3C00A84AB3 /* Resources */,
-				D61BF0C12AB3B0E300E206F2 /* Embed Frameworks */,
+				D694045D2AB893AA00E4C203 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = NotesCore;
+			packageProductDependencies = (
+			);
 			productName = NotesCore;
 			productReference = D6EF46262AB05A3C00A84AB3 /* NotesCore.framework */;
 			productType = "com.apple.product-type.framework";
@@ -252,6 +352,8 @@
 				Base,
 			);
 			mainGroup = D6EF461C2AB05A3C00A84AB3;
+			packageReferences = (
+			);
 			productRefGroup = D6EF46272AB05A3C00A84AB3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -284,7 +386,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D669CF592AB9BCD6001473D9 /* TimeServiceTest.swift in Sources */,
+				D68D30562ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */,
+				D68D30522ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */,
 				D61BF0C92AB44E5200E206F2 /* StringManagerServiceTests.swift in Sources */,
+				D68D30542ABF17E400EED4BF /* TimeServiceMock.swift in Sources */,
+				D68D30582ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */,
+				D68D305A2ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,13 +402,27 @@
 			files = (
 				D6EF468B2AB06EA300A84AB3 /* FileManagerService.swift in Sources */,
 				D6EF46852AB0612000A84AB3 /* SqlManagerContracts.swift in Sources */,
+				D68D30572ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */,
+				D65EF7622ABCDF1E007400F9 /* ITimeService.swift in Sources */,
 				D6EF46872AB062C600A84AB3 /* LoggerService.swift in Sources */,
+				D65EF76C2ABCE4D6007400F9 /* IStringManagerService.swift in Sources */,
 				D6EF46902AB08BAC00A84AB3 /* DependecyLocator.swift in Sources */,
+				D65EF7642ABCDF47007400F9 /* TimeServiceContracts.swift in Sources */,
+				D65EF75F2ABCDE8A007400F9 /* IFileManagerService.swift in Sources */,
 				D61BF0B62AB3AA0200E206F2 /* StringManagerService.swift in Sources */,
+				D669CF542AB9B213001473D9 /* DateVisualizer.swift in Sources */,
+				D65EF7672ABCE0FC007400F9 /* IPaginationService.swift in Sources */,
+				D68D30532ABF17E400EED4BF /* TimeServiceMock.swift in Sources */,
 				D6EF46802AB0601E00A84AB3 /* SqlManagerService.swift in Sources */,
 				D6EC3AB62AB1C52E00C34312 /* TimeService.swift in Sources */,
+				D68D30552ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */,
+				D68D30512ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */,
 				D6E44A362AB1BA5900212D73 /* Pagination.swift in Sources */,
 				D6EF468D2AB0776100A84AB3 /* Utils.swift in Sources */,
+				D65EF75C2ABCDE52007400F9 /* ISqlManagerService.swift in Sources */,
+				D65EF7692ABCE11C007400F9 /* PaginationServiceContracts.swift in Sources */,
+				D68D30592ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */,
+				D65EF76E2ABCE735007400F9 /* StringManagerServiceContracts.swift in Sources */,
 				D6EC3AB82AB1C78A00C34312 /* PaginationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

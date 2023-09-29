@@ -1,6 +1,6 @@
 import SwiftUI
 
-public enum NSearchFieldStyles {
+public struct NSearchFieldStyles {
     public static let colorUnfocusBorder = NColors.backgroundLighterInverse.opacity(0.5)
     public static let colorFocusBorder = NColors.backgroundInverse
     public static let lineWidthBorder = 2.0
@@ -113,7 +113,7 @@ public struct NSearchField: View {
 
     @ViewBuilder private var hintView: some View {
         NText(
-            showHint ? hint : "",
+            key: showHint ? hint : "",
             type: .title,
             color: NSearchFieldStyles.colorUnfocusBorder,
             lineLimit: 1

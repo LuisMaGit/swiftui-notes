@@ -19,30 +19,31 @@ public struct NTextStyles {
 
     public static func getStyle(_ type: NTextType) -> NTextStyles {
         switch type {
-            case .title:
-                return NTextStyles(
-                    font: .poppinsRegular,
-                    fontSize: 24,
-                    defaultColor: NColors.backgroundInverse
-                )
-            case .body:
-                return NTextStyles(
-                    font: .poppinsRegular,
-                    fontSize: 16,
-                    defaultColor: NColors.backgroundInverse
-                )
-            case .caption:
-                return NTextStyles(
-                    font: .poppinsExtraLight,
-                    fontSize: 14,
-                    defaultColor: NColors.backgroundInverse
-                )
+        case .title:
+            return NTextStyles(
+                font: .poppinsRegular,
+                fontSize: 24,
+                defaultColor: NColors.backgroundInverse
+            )
+        case .body:
+            return NTextStyles(
+                font: .poppinsRegular,
+                fontSize: 16,
+                defaultColor: NColors.backgroundInverse
+            )
+        case .caption:
+            return NTextStyles(
+                font: .poppinsExtraLight,
+                fontSize: 14,
+                defaultColor: NColors.backgroundInverse
+            )
         }
     }
 }
 
 public struct NText: View {
-    let key: LocalizedStringKey
+    let key: LocalizedStringKey?
+    let text: String?
     let type: NTextType
     let color: Color?
     let font: NTextFont?
@@ -50,7 +51,8 @@ public struct NText: View {
     let lineLimit: Int?
 
     public init(
-        _ key: LocalizedStringKey,
+        key: LocalizedStringKey? = nil,
+        text: String? = nil,
         type: NTextType = .body,
         color: Color? = nil,
         font: NTextFont? = nil,
@@ -58,11 +60,16 @@ public struct NText: View {
         lineLimit: Int? = nil
     ) {
         self.key = key
+        self.text = text
         self.type = type
         self.color = color
         self.font = font
         self.fontSize = fontSize
         self.lineLimit = lineLimit
+        assert(
+            text != nil || key != nil,
+            "both key and text can't be nil"
+        )
     }
 
     var style: NTextStyles {
@@ -84,8 +91,20 @@ public struct NText: View {
         }
     }
 
+    var getText: Text {
+        if let key = key {
+            return Text(key)
+        }
+
+        if let text = text {
+            return Text(text)
+        }
+
+        return Text("")
+    }
+
     public var body: some View {
-        Text(key)
+        getText
             .foregroundColor(getColor)
             .font(getFont)
             .lineLimit(lineLimit)
@@ -95,9 +114,9 @@ public struct NText: View {
 struct NText_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            NText("Title", type: .title)
-            NText("Body", type: .body)
-            NText("Caption", type: .caption)
+            NText(text: "Title", type: .title)
+            NText(text: "Body", type: .body)
+            NText(text: "Caption", type: .caption)
         }
     }
 }

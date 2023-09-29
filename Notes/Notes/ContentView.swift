@@ -11,9 +11,8 @@ struct ContentView: View {
 
     var body: some View {
         Notes(
-            state: notesVM.state,
             sendEvent: notesVM.sendEvent
-        )
+        ).environmentObject(notesVM.state)
     }
 }
 

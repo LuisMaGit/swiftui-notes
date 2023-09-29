@@ -2,7 +2,7 @@
 import XCTest
 
 final class StringManagerServiceTests: XCTestCase {
-    func test_getFirstChars_whit_less_or_equal_than_amount() {
+    func test_getFirstChars_with_less_or_equal_than_amount() {
         let service = StringMangerService()
         let stub = "Luisma"
         XCTAssertEqual(

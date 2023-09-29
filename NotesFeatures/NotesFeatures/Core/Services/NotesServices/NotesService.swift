@@ -1,97 +1,111 @@
 import Foundation
 import NotesCore
 
-public class NotesService {
+public class NotesService: INotesService {
     let logger: LoggerService
-    let sqlManagerService: SqlManagerService
-    let timeService: TimeService
-    let paginationService: PaginationService
+    let sqlManagerService: ISqlManagerService
+    let timeService: ITimeService
+    let paginationService: IPaginationService
+    let stringService: IStringManagerService
 
     public init(
-        logger: LoggerService = LoggerService(logFrom: "NotesSqlService"),
-        sqlManagerService: SqlManagerService,
-        timeService: TimeService,
-        paginationService: PaginationService
+        logger: LoggerService = LoggerService(
+            logFrom: "NotesSqlService"
+        ),
+        sqlManagerService: ISqlManagerService,
+        timeService: ITimeService,
+        paginationService: IPaginationService,
+        stringService: IStringManagerService
     ) {
         self.logger = logger
         self.sqlManagerService = sqlManagerService
         self.timeService = timeService
         self.paginationService = paginationService
-        connectionResult = sqlManagerService.openDB()
+        self.stringService = stringService
     }
 
-    public private(set) var connectionResult = Result<Never>.error(
-        message: ""
-    )
-
-    public func getNotes(page: Int) -> Result<Pagination<Note>> {
-        // error db connection
-        if case .error(message: let message) = connectionResult {
-            return Result.error(message: message)
-        }
-
-        // query
+    public func getNotes(
+        page: Int,
+        itemsInPage: Int
+    ) -> Result<Pagination<Note>> {
+        let query = selectNotesPaginatedQuery(
+            limit: itemsInPage,
+            offset: paginationService.convertPageInSqlOffset(
+                page: page,
+                itemsInPage: itemsInPage
+            )
+        )
         let resultQuery = sqlManagerService.multipleRowsQuery(
-            query: selectNotesPaginatedQuery(
-                limit: paginationService.itemsInPage,
-                offset: paginationService.convertPageInSqlOffset(page)
-            ),
+            query: query,
             resultColumnMapper: [
                 .integer, // row_id
                 .text, // title
                 .text, // content
                 .text, // color
-                .text // date
+                .text, // date
             ]
         )
 
         switch resultQuery {
-            // error query
-            case .error(message: let message):
-                return Result.error(message: message)
-            // map query to object
-            case .success(data: let source):
-
-                // columns validation
-                if let sourceValidated = source,
-                   sourceValidated.isEmpty,
-                   sourceValidated.values.isEmpty,
-                   sourceValidated.values.first?.isEmpty ?? true
-                {
-                    return Result.success(
-                        data: Pagination(
-                            page: page,
-                            data: []
-                        )
-                    )
-                }
-
+        // error query
+        case let .error(message: message):
+            logger.error("query: \(query): \(String(describing: message))")
+            return Result.error(message: message)
+        // map query to object
+        case let .success(data: source):
+            // columns validation
+            if let sourceValidated = source,
+               !sourceValidated.isEmpty,
+               !sourceValidated.values.isEmpty,
+               !(sourceValidated.values.first?.isEmpty ?? true)
+            {
                 // map source map to [Note] model
-                let rowCount = source!.first!.value.count
+                let rowCount = sourceValidated.first!.value.count
                 var notes: [Note] = []
                 for rowIdx in 0 ..< rowCount {
-                    var note = Note()
+                    let base = Note()
                     // row_id: 0
-                    note.id = source?[0]?[rowIdx] as? Int ?? note.id
+                    let id = sourceValidated[0]?[rowIdx] as? Int ?? base.id
                     // title: 1
-                    note.title = source?[1]?[rowIdx] as? String ?? note.title
+                    let title = sourceValidated[1]?[rowIdx] as? String ?? base.title
                     // content: 2
-                    note.content = source?[2]?[rowIdx] as? String ?? note.content
+                    let content = sourceValidated[2]?[rowIdx] as? String ?? base.content
                     // color: 3
-                    note.color = source?[3]?[rowIdx] as? String ?? note.color
+                    let color = sourceValidated[3]?[rowIdx] as? String ?? base.color
                     // color: 4
-                    note.dateCreation = timeService.convertStringToDate(
-                        source: source?[4]?[rowIdx] as? String
+                    let creationDate = timeService.dateToDateVisualizer(
+                        source: sourceValidated[4]?[rowIdx] as? String
+                    )
+                    let shortContent = stringService.getFirstChars(
+                        of: title,
+                        amount: FIRST_CHARS_DEFAULT
+                    )
+                    let note = Note(
+                        id: id,
+                        title: title,
+                        content: content,
+                        shortContent: shortContent,
+                        color: color,
+                        creationDate: creationDate
                     )
                     notes.append(note)
                 }
-
+                // data
                 return Result.success(
                     data: Pagination(
                         page: page,
                         data: notes
                     )
                 )
+            }
+
+            // data empty
+            return Result.success(
+                data: Pagination(
+                    page: page,
+                    data: []
+                )
+            )
         }
     }
 }

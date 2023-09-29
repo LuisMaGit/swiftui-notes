@@ -37,19 +37,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D64123192AA75A3600A233BC /* NotesMain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesMain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D64D629C2AA2475A00D310D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D66D434D2AAE2413001FA576 /* NotesFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D69B227D2A98EF1D00324B98 /* CoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D3567C2AA247F000B694F8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D6D935402A98EE0600F87115 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D935432A98EE0600F87115 /* NotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesApp.swift; sourceTree = "<group>"; };
 		D6D935452A98EE0600F87115 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D6D935472A98EE0700F87115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6D9354A2A98EE0700F87115 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D6E7B69E2A98F18D008706F8 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6E7B6B62A98F22D008706F8 /* CoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6E7B6CD2A98F2DF008706F8 /* core_ui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = core_ui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E7B6E42A98F41A008706F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D6E7B6E52A98F422008706F8 /* NotesCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EF46742AB05C7E00A84AB3 /* NotesFeatures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesFeatures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,13 +69,7 @@
 			children = (
 				D6EF467A2AB05FCA00A84AB3 /* NotesCore.framework */,
 				D6EF46742AB05C7E00A84AB3 /* NotesFeatures.framework */,
-				D66D434D2AAE2413001FA576 /* NotesFeature.framework */,
-				D64123192AA75A3600A233BC /* NotesMain.framework */,
 				D6E7B6E52A98F422008706F8 /* NotesCoreUI.framework */,
-				D6E7B6CD2A98F2DF008706F8 /* core_ui.framework */,
-				D6E7B6B62A98F22D008706F8 /* CoreUI.framework */,
-				D6E7B69E2A98F18D008706F8 /* Core.framework */,
-				D69B227D2A98EF1D00324B98 /* CoreUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

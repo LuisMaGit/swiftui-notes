@@ -1,2 +1,8 @@
-//reusable
-"searchbar.hint" = "Busca en tus notas";
+"error.label" = "Algo falló :(";
+"try-again.label" = "Inténtelo nuevamente";
+"today.label" = "hoy";
+"yesterday.label" = "ayer";
+"notes.header.title" = "Tus notas";
+"notes.header.items-selected" = "Selección: ";
+"notes.searchbar.hint" = "Busca en tus notas";
+"notes.empty-result.label" = "Sin resultados";

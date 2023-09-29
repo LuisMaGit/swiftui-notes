@@ -1,30 +1,37 @@
 import SwiftUI
 
-private enum NoteCardConstants {
+private struct NoteCardConstants {
     static let borderRadius: Double = NBorderRadius.k10
     static let cornerSize: Double = 30
     static let lineLimitTitle: Int = 1
     static let trashcanButtonSize = 12.0
     static let cardMinHeight = 80.0
     static let cardMaxHeight = 200.0
+    static let fontSizeTime = 10.0
 }
 
 public struct NoteCard: View {
-    let title: LocalizedStringKey?
-    let content: LocalizedStringKey
+    let title: String?
+    let content: String
+    let date: LocalizedStringKey
+    let time: String
     let selected: Bool
     let color: Color
 
     public init(
-        title: LocalizedStringKey? = nil,
-        content: LocalizedStringKey = "",
+        title: String = "",
+        content: String = "",
         selected: Bool = false,
-        color: Color = NColors.blueLight
+        color: Color = NColors.babyBlue,
+        date: LocalizedStringKey = "",
+        time: String = ""
     ) {
         self.title = title
         self.content = content
         self.selected = selected
         self.color = color
+        self.date = date
+        self.time = time
     }
 
     public var body: some View {
@@ -53,34 +60,43 @@ public struct NoteCard: View {
         )
     }
 
-    @ViewBuilder var contentText: some View {
-        NText(
-            content,
-            color: NColors.backgroundDark
-        )
-    }
-
     @ViewBuilder var layoutBuilder: some View {
-        if let title = title {
-            VStack(
-                alignment: .leading,
-                spacing: 0
-            ) {
-                NText(
-                    title,
-                    type: .title,
-                    color: NColors.backgroundLighterDark,
-                    lineLimit: NoteCardConstants.lineLimitTitle
-                )
-                contentText
-            }
+        VStack(
+            alignment: .leading,
+            spacing: 0
+        ) {
+            NText(
+                text: title ?? "",
+                type: .title,
+                color: NColors.backgroundLighterDark,
+                lineLimit: NoteCardConstants.lineLimitTitle
+            )
             .padding(.vertical, NSpace.k8)
-        } else {
-            contentText.padding(.vertical, NSpace.k16)
+            NText(
+                text: content,
+                color: NColors.backgroundDark
+            )
+            .padding(.bottom, NSpace.k8)
+            HStack(
+                alignment: .lastTextBaseline
+            ) {
+                Spacer()
+                NText(
+                    key: date,
+                    type: .caption,
+                    color: NColors.backgroundLighterInverse
+                )
+                NText(
+                    text: time,
+                    type: .caption,
+                    color: NColors.backgroundLighterInverse,
+                    fontSize: NoteCardConstants.fontSizeTime
+                )
+            }
+            .padding(.bottom, NSpace.k8)
         }
     }
 }
-
 
 private struct NoteCardWrapper: View {
     let borderRadius: Double = NoteCardConstants.borderRadius
@@ -148,7 +164,7 @@ private struct NoteCardWrapper: View {
             }
 
             func corner() {
-                let cornerColor = UIHelper.blendColor(
+                let cornerColor = CoreUIUtils.blendColor(
                     color1: UIColor(color),
                     color2: UIColor(.black),
                     intensity2: 0.15
@@ -197,9 +213,10 @@ struct NoteCard_Previews: PreviewProvider {
     static var previews: some View {
         NoteCard(
             title: "Title",
-            content: "AA",
-            selected: false
+            content: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            selected: true,
+            date: "Today",
+            time: "10:43"
         )
     }
 }
-

@@ -1,5 +1,8 @@
-//reusable
-"searchbar.hint" = "Search in your notes";
-//notes
+"error.label" = "Something went wrong :(";
+"try-again.label" = "Try again";
+"today.label" = "today";
+"yesterday.label" = " yesterday";
 "notes.header.title" = "Your notes";
 "notes.header.items-selected" = "Selected notes: ";
+"notes.searchbar.hint" = "Search in your notes";
+"notes.empty-result.label" = "No results";

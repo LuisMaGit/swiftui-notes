@@ -24,12 +24,12 @@ public class LoggerService {
 
     public func verbose(_ value: String) {
         #if DEBUG
-        buildAndLog(
-            value: value,
-            logger: { fullLog in
-                logger.log("\(fullLog)")
-            }
-        )
+            buildAndLog(
+                value: value,
+                logger: { fullLog in
+                    logger.log("\(fullLog)")
+                }
+            )
         #endif
     }
 

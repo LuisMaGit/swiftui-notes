@@ -1,10 +1,11 @@
 import SwiftUI
 
 public enum NIconsType: String {
-    case magnifyingglass = "magnifyingglass"
+    case magnifyingglass
     case horizontaldecrease = "line.3.horizontal.decrease"
-    case xmark = "xmark"
-    case trash = "trash"
+    case xmark
+    case trash
+    case multiplyCircle = "multiply.circle"
 }
 
 public struct NIcons: View {
@@ -22,7 +23,7 @@ public struct NIcons: View {
         self.size = size
     }
 
-    public var body: some View { 
+    public var body: some View {
         Image(
             systemName: type.rawValue
         )

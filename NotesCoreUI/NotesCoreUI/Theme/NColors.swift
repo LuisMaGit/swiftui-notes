@@ -58,12 +58,12 @@ public struct NColors {
     public static let backgroundLighterInverseLight = getLight(backgroundLighterInverseKey)
     public static let backgroundLighterInverseDark = getDark(backgroundLighterInverseKey)
 
-    public static let blueLight = getBundleColor("blue_light")
     public static let accent = getBundleColor("blue_bright")
-}
 
-//RedOrange (0xffffab91)
-//RedPink (0xfff48fb1)
-//BabyBlue (0xff81deea)
-//Violet (0xffcf94da)
-//LightGreen (0xffe7ed9b)
+    // notes colors
+    public static let redOrange = getBundleColor("red_orange")
+    public static let redPink = getBundleColor("red_pink")
+    public static let babyBlue = getBundleColor("baby_blue")
+    public static let violet = getBundleColor("violet")
+    public static let lightGreen = getBundleColor("light_green")
+}

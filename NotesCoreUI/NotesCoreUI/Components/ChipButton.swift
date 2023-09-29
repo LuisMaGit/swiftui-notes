@@ -1,14 +1,12 @@
 
 import SwiftUI
 
-
-public enum ChipButtonStyles {
+public struct ChipButtonStyles {
     static let lineWidth = 2.0
     static let colorActive = NColors.backgroundInverse
     static let colorUnactive = NColors.background
     static let maxWidth = 120.0
 }
-
 
 public struct ChipButton: View {
     let key: LocalizedStringKey
@@ -56,7 +54,7 @@ public struct ChipButton: View {
 
     @ViewBuilder var textView: some View {
         NText(
-            key,
+            key: key,
             type: .body,
             color: selected ?
                 ChipButtonStyles.colorUnactive :
@@ -74,7 +72,6 @@ public struct ChipButton: View {
         .fixedSize(horizontal: true, vertical: false)
     }
 }
-
 
 struct ChipButton_Previews: PreviewProvider {
     static var previews: some View {

@@ -1,0 +1,52 @@
+# cd /opt/homebrew/Cellar/sourcery
+# sourcery --config /Users/luis.garcia/Desktop/swiftui-notes/AutoMockConfig.yml
+configurations:
+  # StringManagerService
+  - sources:
+      - ./NotesCore/NotesCore/Services/StringManagerService/
+    templates:
+      - ./AutoMockable.stencil
+    output: ./NotesCore/NotesCoreTestsUtils/Mocks/StringManagerServiceMock.swift
+    args:
+      # autoMockableTestableImports: ["NotesCore"]
+      # autoMockableImports: []
+
+  # PaginationService
+  - sources:
+      - ./NotesCore/NotesCore/Services/PaginationService/
+    templates:
+      - ./AutoMockable.stencil
+    output: ./NotesCore/NotesCoreTestsUtils/Mocks/PaginationServiceMock.swift
+    args:
+      # autoMockableTestableImports: ["NotesCore"]
+      # autoMockableImports: []
+
+  # TimeService
+  - sources:
+      - ./NotesCore/NotesCore/Services/TimeService/
+    templates:
+      - ./AutoMockable.stencil
+    output: ./NotesCore/NotesCoreTestsUtils/Mocks/TimeServiceMock.swift
+    args:
+      # autoMockableTestableImports: ["NotesCore"]
+      # autoMockableImports: []
+
+  # FileManagerService
+  - sources:
+      - ./NotesCore/NotesCore/Services/FileManagerService/
+    templates:
+      - ./AutoMockable.stencil
+    output: ./NotesCore/NotesCoreTestsUtils/Mocks/FileManagerServiceMock.swift
+    args:
+      # autoMockableTestableImports: ["NotesCore"]
+      # autoMockableImports: []
+
+  # SqlManagerService
+  - sources:
+      - ./NotesCore/NotesCore/Services/SqlManagerService/
+    templates:
+      - ./AutoMockable.stencil
+    output: ./NotesCore/NotesCoreTestsUtils/Mocks/SqlManagerServiceMock.swift
+    args:
+      # autoMockableTestableImports: ["NotesCore"]
+      # autoMockableImports: []

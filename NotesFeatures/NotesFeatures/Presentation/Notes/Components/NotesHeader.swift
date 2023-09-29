@@ -1,31 +1,23 @@
 import NotesCoreUI
 import SwiftUI
 
-enum NotesHeaderStyles {
-    static let height = 100.0
-    static let iconSpacing = NSpace.k8
-}
-
 struct NotesHeader: View {
-    let mode: NotesHeaderMode
-    let switchMode: (_ to: NotesHeaderMode) -> Void
-    let notesSelected: Int
-    let onTapFilter: () -> Void
-    let filterSelected: Bool
+    @EnvironmentObject var state: NotesState
+    let sendEvent: (_ event: NotesVMEvents) -> Void
 
     var body: some View {
         HStack(spacing: 0) {
-            switch mode {
-                case .initial:
-                    appBarView
-                case .searchbar:
-                    searchView
-                case .itemsSelected:
-                    selectionMode
+            switch state.headerMode {
+            case .initial:
+                appBarView
+            case .searchbar:
+                searchView
+            case .itemsSelected:
+                selectionMode
             }
         }
         .frame(
-            height: NotesHeaderStyles.height
+            height: notesHeaderHeight
         )
         .background(
             NColors.background
@@ -34,56 +26,62 @@ struct NotesHeader: View {
 
     @ViewBuilder var appBarView: some View {
         NText(
-            "notes.header.title",
+            key: "notes.header.title",
             type: .title,
             lineLimit: 1
         )
         Spacer()
         NotesHeaderRippleButtonIcon(
-            action: onTapFilter,
+            action: {},
             icon: NIconsType.horizontaldecrease,
-            fixedFeedBack: filterSelected
+            fixedFeedBack: false
         )
         .padding(
             .trailing,
-            NotesHeaderStyles.iconSpacing
+            notesHeaderIconSpacing
         )
         NotesHeaderRippleButtonIcon(
-            action: { switchMode(.searchbar) },
+            action: {
+                sendEvent(.changeAppbar(to: .searchbar))
+            },
             icon: NIconsType.magnifyingglass
         )
     }
 
     @ViewBuilder var searchView: some View {
         NSearchField(
-            hint: "searchbar.hint"
+            hint: "notes.searchbar.hint"
         )
         .padding(
             .trailing,
-            NotesHeaderStyles.iconSpacing
+            notesHeaderIconSpacing
         )
         NotesHeaderRippleButtonIcon(
-            action: { switchMode(.initial) },
+            action: {
+                sendEvent(.changeAppbar(to: .initial))
+            },
             icon: NIconsType.xmark
         )
     }
 
     @ViewBuilder var selectionMode: some View {
         NText(
-            "notes.header.items-selected",
+            key: "notes.header.items-selected",
             lineLimit: 1
         )
         .padding(
             .trailing,
-            NotesHeaderStyles.iconSpacing
+            notesHeaderIconSpacing
         )
         NText(
-            "\(notesSelected)",
+            text: "\(0)",
             font: .poppinsBlack
         )
         Spacer()
         NotesHeaderRippleButtonIcon(
-            action: { switchMode(.searchbar) },
+            action: {
+                sendEvent(.changeAppbar(to: .initial))
+            },
             icon: NIconsType.trash
         )
     }
@@ -92,11 +90,8 @@ struct NotesHeader: View {
 struct NotesHeader_Previews: PreviewProvider {
     static var previews: some View {
         NotesHeader(
-            mode: .initial,
-            switchMode: { _ in },
-            notesSelected: 10,
-            onTapFilter: {},
-            filterSelected: true
+            state: .init(),
+            sendEvent: { _ in }
         )
         .background(.red)
     }
