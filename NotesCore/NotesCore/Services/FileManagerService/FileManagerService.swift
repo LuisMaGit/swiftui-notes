@@ -7,7 +7,7 @@ class FileManagerService: IFileManagerService {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 
-    func existsFileInDocumments(file: String) -> Bool {
+    func existsFileInDocuments(file: String) -> Bool {
         return fileManager.fileExists(
             atPath: "\(documentsPath().path())\(file)"
         )

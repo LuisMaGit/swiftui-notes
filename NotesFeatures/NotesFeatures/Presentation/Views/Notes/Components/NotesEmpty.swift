@@ -26,9 +26,14 @@ struct NotesEmpty: View {
 
 struct NotesEmpty_Previews: PreviewProvider {
     static var previews: some View {
-        NotesEmpty(
-            state: .init(),
-            sendEvent: { _ in }
+        let vm: NotesVM = .init()
+        Notes(
+            sendEvent: vm.sendEvent
+        )
+        .environmentObject(
+            NotesState(
+                screenState: .empty
+            )
         )
     }
 }

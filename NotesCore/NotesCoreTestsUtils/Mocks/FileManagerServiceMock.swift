@@ -58,25 +58,25 @@ public class IFileManagerServiceMock: IFileManagerService {
         }
     }
 
-    //MARK: - existsFileInDocumments
+    //MARK: - existsFileInDocuments
 
-    public var existsFileInDocummentsFileCallsCount = 0
-    public var existsFileInDocummentsFileCalled: Bool {
-        return existsFileInDocummentsFileCallsCount > 0
+    public var existsFileInDocumentsFileCallsCount = 0
+    public var existsFileInDocumentsFileCalled: Bool {
+        return existsFileInDocumentsFileCallsCount > 0
     }
-    public var existsFileInDocummentsFileReceivedFile: (String)?
-    public var existsFileInDocummentsFileReceivedInvocations: [(String)] = []
-    public var existsFileInDocummentsFileReturnValue: Bool!
-    public var existsFileInDocummentsFileClosure: ((String) -> Bool)?
+    public var existsFileInDocumentsFileReceivedFile: (String)?
+    public var existsFileInDocumentsFileReceivedInvocations: [(String)] = []
+    public var existsFileInDocumentsFileReturnValue: Bool!
+    public var existsFileInDocumentsFileClosure: ((String) -> Bool)?
 
-    public func existsFileInDocumments(file: String) -> Bool {
-        existsFileInDocummentsFileCallsCount += 1
-        existsFileInDocummentsFileReceivedFile = file
-        existsFileInDocummentsFileReceivedInvocations.append(file)
-        if let existsFileInDocummentsFileClosure = existsFileInDocummentsFileClosure {
-            return existsFileInDocummentsFileClosure(file)
+    public func existsFileInDocuments(file: String) -> Bool {
+        existsFileInDocumentsFileCallsCount += 1
+        existsFileInDocumentsFileReceivedFile = file
+        existsFileInDocumentsFileReceivedInvocations.append(file)
+        if let existsFileInDocumentsFileClosure = existsFileInDocumentsFileClosure {
+            return existsFileInDocumentsFileClosure(file)
         } else {
-            return existsFileInDocummentsFileReturnValue
+            return existsFileInDocumentsFileReturnValue
         }
     }
 

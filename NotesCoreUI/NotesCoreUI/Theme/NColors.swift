@@ -59,6 +59,7 @@ public struct NColors {
     public static let backgroundLighterInverseDark = getDark(backgroundLighterInverseKey)
 
     public static let accent = getBundleColor("blue_bright")
+    public static let hintFieldColor = NColors.backgroundLighterInverse.opacity(0.5)
 
     // notes colors
     public static let redOrange = getBundleColor("red_orange")

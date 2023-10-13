@@ -6,3 +6,9 @@
 "notes.header.items-selected" = "Selected notes: ";
 "notes.searchbar.hint" = "Search in your notes";
 "notes.empty-result.label" = "No results";
+"notes.header.filter.latest.button" = "Latest";
+"notes.header.filter.older.button" = "Older";
+"notes.header.filter.color.button" = "Color";
+"notes-details.title.hint" = "Title";
+"notes-details.title.note" = "Note";
+

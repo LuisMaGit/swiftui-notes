@@ -5,12 +5,22 @@ class StringMangerService: IStringManagerService {
 
     public func getFirstChars(
         of: String,
-        amount: Int 
+        amount: Int
     ) -> String {
         if of.count <= amount {
             return of
         }
 
         return String(of.prefix(amount))
+    }
+
+    func splitWithCommasInParenthesis(
+        of: [Int]
+    ) -> String {
+        let onlyNumbers = of
+            .description
+            .replacingOccurrences(of: "[", with: "")
+            .replacingOccurrences(of: "]", with: "")
+        return "(\(onlyNumbers))"
     }
 }

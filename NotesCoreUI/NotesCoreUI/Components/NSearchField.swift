@@ -1,7 +1,7 @@
 import SwiftUI
 
-public struct NSearchFieldStyles {
-    public static let colorUnfocusBorder = NColors.backgroundLighterInverse.opacity(0.5)
+public enum NSearchFieldStyles {
+    public static let colorUnfocusBorder = NColors.hintFieldColor
     public static let colorFocusBorder = NColors.backgroundInverse
     public static let lineWidthBorder = 2.0
     public static let paddingHorizontal = NSpace.k8
@@ -12,6 +12,7 @@ public struct NSearchField: View {
     @State var text: String
     let hint: LocalizedStringKey
     let startFocused: Bool
+    let onChangeText: (String) -> Void
     // control
     @FocusState private var focus: Bool
     @State private var showHint: Bool = true
@@ -21,11 +22,13 @@ public struct NSearchField: View {
     public init(
         text: String = "",
         hint: LocalizedStringKey = "",
-        startFocused: Bool = false
+        startFocused: Bool = false,
+        onChangeText: @escaping (String) -> Void
     ) {
         self.text = text
         self.hint = hint
         self.startFocused = startFocused
+        self.onChangeText = onChangeText
     }
 
     private var textStyle: NTextStyles {
@@ -89,9 +92,10 @@ public struct NSearchField: View {
             .onChange(of: focus) { newFocus in
                 borderColorHandler(newFocus)
             }
-            .onChange(of: text) { _ in
+            .onChange(of: text) { value in
                 showHintHandler()
                 suffixIconHandler()
+                onChangeText(value)
             }
             .onAppear {
                 showHintHandler()
@@ -129,7 +133,7 @@ public struct NSearchField: View {
             )
             .padding(
                 .trailing,
-                RippleButtonStyles.paddingTransparent
+                RippleButtonContracts.paddingTransparent
             )
             .allowsHitTesting(false)
         } else {
@@ -150,7 +154,8 @@ struct NSearchField_Previews: PreviewProvider {
         NSearchField(
             text: "afaf",
             hint: "Search in your notes",
-            startFocused: false
+            startFocused: false,
+            onChangeText: { _ in }
         )
     }
 }

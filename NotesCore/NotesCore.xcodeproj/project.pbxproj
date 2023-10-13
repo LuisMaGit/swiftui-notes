@@ -21,15 +21,10 @@
 		D669CF542AB9B213001473D9 /* DateVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669CF532AB9B213001473D9 /* DateVisualizer.swift */; };
 		D669CF592AB9BCD6001473D9 /* TimeServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669CF582AB9BCD6001473D9 /* TimeServiceTest.swift */; };
 		D68D30512ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */; };
-		D68D30522ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */; };
 		D68D30532ABF17E400EED4BF /* TimeServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */; };
-		D68D30542ABF17E400EED4BF /* TimeServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */; };
 		D68D30552ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */; };
-		D68D30562ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */; };
 		D68D30572ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304F2ABF17E400EED4BF /* StringManagerServiceMock.swift */; };
-		D68D30582ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304F2ABF17E400EED4BF /* StringManagerServiceMock.swift */; };
 		D68D30592ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D30502ABF17E400EED4BF /* PaginationServiceMock.swift */; };
-		D68D305A2ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D30502ABF17E400EED4BF /* PaginationServiceMock.swift */; };
 		D694045B2AB893AA00E4C203 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (Weak, ); }; };
 		D694045C2AB893AA00E4C203 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D6E44A362AB1BA5900212D73 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E44A352AB1BA5900212D73 /* Pagination.swift */; };
@@ -387,12 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D669CF592AB9BCD6001473D9 /* TimeServiceTest.swift in Sources */,
-				D68D30562ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */,
-				D68D30522ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */,
 				D61BF0C92AB44E5200E206F2 /* StringManagerServiceTests.swift in Sources */,
-				D68D30542ABF17E400EED4BF /* TimeServiceMock.swift in Sources */,
-				D68D30582ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */,
-				D68D305A2ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

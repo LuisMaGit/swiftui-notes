@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		D6126FE72AC5DD35005CE9E3 /* NotesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */; };
 		D6126FE82AC5DD35005CE9E3 /* NotesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D631C9292AD715EF006FDBB6 /* NTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631C9282AD715EF006FDBB6 /* NTextField.swift */; };
+		D631C92B2AD71600006FDBB6 /* NTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631C92A2AD71600006FDBB6 /* NTextEditor.swift */; };
+		D631C92D2AD7160E006FDBB6 /* NEditorHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */; };
 		D6419F192AAB473400C71902 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6419F182AAB473400C71902 /* Poppins-Black.ttf */; };
+		D6435C902ACDAF32007F5B8F /* CircleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6435C8F2ACDAF32007F5B8F /* CircleColor.swift */; };
 		D64868B62A9E3806005D9A7E /* NText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64868B52A9E3806005D9A7E /* NText.swift */; };
 		D64868B82A9E3BB6005D9A7E /* NConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64868B72A9E3BB6005D9A7E /* NConstants.swift */; };
 		D64D627E2A9F34DC00D310D6 /* NotesCoreUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D627D2A9F34DC00D310D6 /* NotesCoreUI.swift */; };
@@ -18,9 +22,11 @@
 		D64D62862AA1E91B00D310D6 /* NIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D62852AA1E91B00D310D6 /* NIcons.swift */; };
 		D64D62882AA1ECDA00D310D6 /* RippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D62872AA1ECDA00D310D6 /* RippleButton.swift */; };
 		D64D628D2AA2116600D310D6 /* NSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D628C2AA2116600D310D6 /* NSearchField.swift */; };
+		D6867E8E2ACB09970006C5B6 /* ExtensionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6867E8D2ACB09970006C5B6 /* ExtensionUI.swift */; };
 		D68D1EBC2AA6263000A864BA /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D1EBB2AA6263000A864BA /* ChipButton.swift */; };
+		D699E3E62AD7108500FE6F32 /* NIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699E3E52AD7108500FE6F32 /* NIconButton.swift */; };
+		D6B0B0EB2AD5B21500E6E454 /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0B0EA2AD5B21500E6E454 /* ColorSelector.swift */; };
 		D6BBCF302AC5A649001F7233 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BBCF2F2AC5A649001F7233 /* NLoader.swift */; };
-		D6C343502AC72D5B001D7BFD /* NotesCoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C3434F2AC72D5B001D7BFD /* NotesCoreUtils.swift */; };
 		D6E7B6DE2A98F415008706F8 /* NotesCoreUI.h in Headers */ = {isa = PBXBuildFile; fileRef = D6E7B6DD2A98F415008706F8 /* NotesCoreUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6E7B6EC2A98F53A008706F8 /* NoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6EB2A98F53A008706F8 /* NoteCard.swift */; };
 		D6E7B6F12A98F66C008706F8 /* CoreUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7B6F02A98F66C008706F8 /* CoreUIUtils.swift */; };
@@ -45,7 +51,11 @@
 
 /* Begin PBXFileReference section */
 		D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D631C9282AD715EF006FDBB6 /* NTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTextField.swift; sourceTree = "<group>"; };
+		D631C92A2AD71600006FDBB6 /* NTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTextEditor.swift; sourceTree = "<group>"; };
+		D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEditorHint.swift; sourceTree = "<group>"; };
 		D6419F182AAB473400C71902 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		D6435C8F2ACDAF32007F5B8F /* CircleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleColor.swift; sourceTree = "<group>"; };
 		D64868B52A9E3806005D9A7E /* NText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NText.swift; sourceTree = "<group>"; };
 		D64868B72A9E3BB6005D9A7E /* NConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NConstants.swift; sourceTree = "<group>"; };
 		D64868C52A9E43D9005D9A7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -55,9 +65,11 @@
 		D64D62852AA1E91B00D310D6 /* NIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIcons.swift; sourceTree = "<group>"; };
 		D64D62872AA1ECDA00D310D6 /* RippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleButton.swift; sourceTree = "<group>"; };
 		D64D628C2AA2116600D310D6 /* NSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSearchField.swift; sourceTree = "<group>"; };
+		D6867E8D2ACB09970006C5B6 /* ExtensionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUI.swift; sourceTree = "<group>"; };
 		D68D1EBB2AA6263000A864BA /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
+		D699E3E52AD7108500FE6F32 /* NIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIconButton.swift; sourceTree = "<group>"; };
+		D6B0B0EA2AD5B21500E6E454 /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
 		D6BBCF2F2AC5A649001F7233 /* NLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
-		D6C3434F2AC72D5B001D7BFD /* NotesCoreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCoreUtils.swift; sourceTree = "<group>"; };
 		D6E7B6DA2A98F415008706F8 /* NotesCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NotesCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E7B6DD2A98F415008706F8 /* NotesCoreUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotesCoreUI.h; sourceTree = "<group>"; };
 		D6E7B6EB2A98F53A008706F8 /* NoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCard.swift; sourceTree = "<group>"; };
@@ -133,12 +145,18 @@
 			isa = PBXGroup;
 			children = (
 				D64D62872AA1ECDA00D310D6 /* RippleButton.swift */,
+				D68D1EBB2AA6263000A864BA /* ChipButton.swift */,
 				D6E7B6EB2A98F53A008706F8 /* NoteCard.swift */,
 				D64868B52A9E3806005D9A7E /* NText.swift */,
 				D64D62852AA1E91B00D310D6 /* NIcons.swift */,
+				D699E3E52AD7108500FE6F32 /* NIconButton.swift */,
 				D64D628C2AA2116600D310D6 /* NSearchField.swift */,
-				D68D1EBB2AA6263000A864BA /* ChipButton.swift */,
 				D6BBCF2F2AC5A649001F7233 /* NLoader.swift */,
+				D6435C8F2ACDAF32007F5B8F /* CircleColor.swift */,
+				D6B0B0EA2AD5B21500E6E454 /* ColorSelector.swift */,
+				D631C9282AD715EF006FDBB6 /* NTextField.swift */,
+				D631C92A2AD71600006FDBB6 /* NTextEditor.swift */,
+				D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -147,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				D6E7B6F02A98F66C008706F8 /* CoreUIUtils.swift */,
-				D6C3434F2AC72D5B001D7BFD /* NotesCoreUtils.swift */,
+				D6867E8D2ACB09970006C5B6 /* ExtensionUI.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -249,7 +267,6 @@
 			files = (
 				D64D62882AA1ECDA00D310D6 /* RippleButton.swift in Sources */,
 				D6E7B6EC2A98F53A008706F8 /* NoteCard.swift in Sources */,
-				D6C343502AC72D5B001D7BFD /* NotesCoreUtils.swift in Sources */,
 				D64D628D2AA2116600D310D6 /* NSearchField.swift in Sources */,
 				D64D62862AA1E91B00D310D6 /* NIcons.swift in Sources */,
 				D64868B82A9E3BB6005D9A7E /* NConstants.swift in Sources */,
@@ -258,8 +275,15 @@
 				D6E7B6F82A98FB34008706F8 /* NColors.swift in Sources */,
 				D6E7B6FB2A98FFC5008706F8 /* NotesCoreUIContracts.swift in Sources */,
 				D6BBCF302AC5A649001F7233 /* NLoader.swift in Sources */,
+				D6867E8E2ACB09970006C5B6 /* ExtensionUI.swift in Sources */,
 				D6E7B6F12A98F66C008706F8 /* CoreUIUtils.swift in Sources */,
+				D631C92B2AD71600006FDBB6 /* NTextEditor.swift in Sources */,
+				D6435C902ACDAF32007F5B8F /* CircleColor.swift in Sources */,
+				D631C9292AD715EF006FDBB6 /* NTextField.swift in Sources */,
+				D6B0B0EB2AD5B21500E6E454 /* ColorSelector.swift in Sources */,
+				D631C92D2AD7160E006FDBB6 /* NEditorHint.swift in Sources */,
 				D64868B62A9E3806005D9A7E /* NText.swift in Sources */,
+				D699E3E62AD7108500FE6F32 /* NIconButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

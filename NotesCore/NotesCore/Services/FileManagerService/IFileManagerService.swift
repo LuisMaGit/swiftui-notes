@@ -3,5 +3,5 @@ import Foundation
 //sourcery: AutoMockable
 public protocol IFileManagerService {
     func documentsPath() -> URL
-    func existsFileInDocumments(file: String) -> Bool
+    func existsFileInDocuments(file: String) -> Bool
 }

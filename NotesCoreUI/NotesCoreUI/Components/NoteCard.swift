@@ -1,6 +1,6 @@
 import SwiftUI
 
-private struct NoteCardConstants {
+private enum NoteCardConstants {
     static let borderRadius: Double = NBorderRadius.k10
     static let cornerSize: Double = 30
     static let lineLimitTitle: Int = 1
@@ -17,6 +17,8 @@ public struct NoteCard: View {
     let time: String
     let selected: Bool
     let color: Color
+    let onTap: () -> Void
+    let onLongPress: () -> Void
 
     public init(
         title: String = "",
@@ -24,7 +26,9 @@ public struct NoteCard: View {
         selected: Bool = false,
         color: Color = NColors.babyBlue,
         date: LocalizedStringKey = "",
-        time: String = ""
+        time: String = "",
+        onTap: @escaping () -> Void,
+        onLongPress: @escaping () -> Void
     ) {
         self.title = title
         self.content = content
@@ -32,25 +36,34 @@ public struct NoteCard: View {
         self.color = color
         self.date = date
         self.time = time
+        self.onTap = onTap
+        self.onLongPress = onLongPress
     }
 
     public var body: some View {
-        ZStack(
-            alignment: .topLeading
-        ) {
-            wrapper
-            layoutBuilder
-                .padding(.leading, NSpace.k16)
-                .padding(
-                    .trailing,
-                    selected ? NoteCardConstants.cornerSize : NSpace.k16
+        RippleButton(
+            transparent: false,
+            action: onTap,
+            longPressAction: onLongPress,
+            content: {
+                ZStack(
+                    alignment: .topLeading
+                ) {
+                    wrapper
+                    layoutBuilder
+                        .padding(.leading, NSpace.k16)
+                        .padding(
+                            .trailing,
+                            selected ? NoteCardConstants.cornerSize : NSpace.k16
+                        )
+                }
+                .frame(
+                    minHeight: NoteCardConstants.cardMinHeight,
+                    maxHeight: NoteCardConstants.cardMaxHeight
                 )
-        }
-        .frame(
-            minHeight: NoteCardConstants.cardMinHeight,
-            maxHeight: NoteCardConstants.cardMaxHeight
+                .fixedSize(horizontal: false, vertical: true)
+            }
         )
-        .fixedSize(horizontal: false, vertical: true)
     }
 
     @ViewBuilder var wrapper: some View {
@@ -84,12 +97,12 @@ public struct NoteCard: View {
                 NText(
                     key: date,
                     type: .caption,
-                    color: NColors.backgroundLighterInverse
+                    color: NColors.backgroundLighterDark
                 )
                 NText(
                     text: time,
                     type: .caption,
-                    color: NColors.backgroundLighterInverse,
+                    color: NColors.backgroundLighterDark,
                     fontSize: NoteCardConstants.fontSizeTime
                 )
             }
@@ -216,7 +229,13 @@ struct NoteCard_Previews: PreviewProvider {
             content: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             selected: true,
             date: "Today",
-            time: "10:43"
+            time: "10:43",
+            onTap: {
+                print("TAP")
+            },
+            onLongPress: {
+                print("LONG TAP")
+            }
         )
     }
 }

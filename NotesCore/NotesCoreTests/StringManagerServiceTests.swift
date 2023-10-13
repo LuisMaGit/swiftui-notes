@@ -37,4 +37,22 @@ final class StringManagerServiceTests: XCTestCase {
             )
         )
     }
+
+    func test_splitWithCommasInParenthesis() {
+        let service = StringMangerService()
+        let resultMulti = service.splitWithCommasInParenthesis(
+            of: [1, 2, 3]
+        )
+        XCTAssertEqual(resultMulti, "(1, 2, 3)")
+        
+        let resultSingle = service.splitWithCommasInParenthesis(
+            of: [1]
+        )
+        XCTAssertEqual(resultSingle, "(1)")
+        
+        let resultEmtpy = service.splitWithCommasInParenthesis(
+            of: []
+        )
+        XCTAssertEqual(resultEmtpy, "()")
+    }
 }

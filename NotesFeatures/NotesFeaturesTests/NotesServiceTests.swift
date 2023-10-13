@@ -31,7 +31,7 @@ final class NotesServiceTest: XCTestCase {
         stringService = nil
     }
 
-    func test_getNotes_empty_rows_and_column_result() {
+    func test_getNotes_empty_rows_and_column_result() async {
         // setup
         let page = 1
         sqlManagerService.openDBReturnValue = Result.success()
@@ -49,9 +49,10 @@ final class NotesServiceTest: XCTestCase {
         let notesService = getAndRegisterNotesService()
 
         // act
-        let result = notesService.getNotes(
+        let result = await notesService.getNotes(
             page: page,
-            itemsInPage: 1
+            itemsInPage: 1,
+            latest: true
         )
 
         // assert
@@ -63,7 +64,7 @@ final class NotesServiceTest: XCTestCase {
         XCTAssertEqual(expected, result)
     }
 
-    func test_getNotes_empty_rows_result() {
+    func test_getNotes_empty_rows_result() async {
         // setup
         let page = 1
         sqlManagerService.openDBReturnValue = Result.success()
@@ -87,9 +88,10 @@ final class NotesServiceTest: XCTestCase {
         let notesService = getAndRegisterNotesService()
 
         // act
-        let result = notesService.getNotes(
+        let result = await notesService.getNotes(
             page: page,
-            itemsInPage: 1
+            itemsInPage: 1,
+            latest: true
         )
 
         // assert
@@ -101,7 +103,7 @@ final class NotesServiceTest: XCTestCase {
         XCTAssertEqual(expected, result)
     }
 
-    func test_getNotes_with_data_result() {
+    func test_getNotes_with_data_result() async {
         // setup
         let page = 1
         let shortContent = "first chars"
@@ -109,7 +111,7 @@ final class NotesServiceTest: XCTestCase {
             0: [1, 2, 3],
             1: ["Title 1", "Title 2", "Title 3"],
             2: ["Content 1", "Content 2", "Content 3"],
-            3: ["Color 1", "Color 2", "Color 3"],
+            3: ["light_green", "Color 2", "red_pink"],
             4: ["nil", "nil", "nil"],
         ]
         let expected = Result.success(
@@ -121,7 +123,7 @@ final class NotesServiceTest: XCTestCase {
                         title: "Title 1",
                         content: "Content 1",
                         shortContent: shortContent,
-                        color: "Color 1",
+                        color: NoteColor.lightGreen,
                         creationDate: nil
                     ),
                     Note(
@@ -129,7 +131,7 @@ final class NotesServiceTest: XCTestCase {
                         title: "Title 2",
                         content: "Content 2",
                         shortContent: shortContent,
-                        color: "Color 2",
+                        color: Note.DEFAULT_COLOR,
                         creationDate: nil
                     ),
                     Note(
@@ -137,7 +139,7 @@ final class NotesServiceTest: XCTestCase {
                         title: "Title 3",
                         content: "Content 3",
                         shortContent: shortContent,
-                        color: "Color 3",
+                        color: NoteColor.redPink,
                         creationDate: nil
                     ),
                 ]
@@ -153,12 +155,56 @@ final class NotesServiceTest: XCTestCase {
         let notesService = getAndRegisterNotesService()
 
         // act
-        let result = notesService.getNotes(
+        let result = await notesService.getNotes(
             page: page,
-            itemsInPage: 1
+            itemsInPage: 1,
+            latest: true
         )
+
+        // assert
         XCTAssertEqual(
             sqlManagerService.multipleRowsQueryQueryResultColumnMapperCallsCount,
+            1
+        )
+        XCTAssertEqual(expected, result)
+    }
+
+    func test_getNoteByID_data_result() async {
+        // setup
+        let queryResult: [Int: Any] = [
+            0: 1,
+            1: "Title 1",
+            2: "Content 1",
+            3: "red_pink",
+            4: "nil",
+        ]
+
+        let shortContent = "first chars"
+
+        let expected: Result<Note?> = Result.success(
+            data: Note(
+                id: 1,
+                title: "Title 1",
+                content: "Content 1",
+                shortContent: shortContent,
+                color: NoteColor.redPink
+            )
+        )
+
+        stringService.getFirstCharsOfAmountReturnValue = shortContent
+        sqlManagerService.openDBReturnValue = Result.success()
+        sqlManagerService.singleRowQueryQueryResultColumnMapperReturnValue = AnyResult.success(
+            data: queryResult
+        )
+
+        let notesService = getAndRegisterNotesService()
+
+        // act
+        let result = await notesService.getNoteById(id: 1)
+
+        // assert
+        XCTAssertEqual(
+            sqlManagerService.singleRowQueryQueryResultColumnMapperCallsCount,
             1
         )
         XCTAssertEqual(expected, result)

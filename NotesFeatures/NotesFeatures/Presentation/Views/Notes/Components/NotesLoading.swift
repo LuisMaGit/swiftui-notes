@@ -20,9 +20,14 @@ struct NotesLoading: View {
 
 struct NotesLoading_Previews: PreviewProvider {
     static var previews: some View {
-        NotesLoading(
-            state: .init(),
-            sendEvent: { _ in }
+        let vm: NotesVM = .init()
+        Notes(
+            sendEvent: vm.sendEvent
+        )
+        .environmentObject(
+            NotesState(
+                screenState: .loading
+            )
         )
     }
 }

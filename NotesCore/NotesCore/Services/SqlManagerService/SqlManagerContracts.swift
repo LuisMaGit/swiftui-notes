@@ -38,11 +38,25 @@ VALUES
     ("Health Diary", "Tracking health and well-being", "red_pink"),
     ("Tech Wishlist", "Gadgets and tech items to consider", "baby_blue"),
     ("Holiday Plans", "Ideas for holiday celebrations", "violet"),
-    ("Hobby Pursuits", "Hobbies to explore and master", "light_green");
-"""
-
-let TEST_QUERY = """
-SELECT rowid, *
-FROM Notes n
-ORDER BY rowid;
+    ("Hobby Pursuits", "Hobbies to explore and master", "light_green"),
+    ("Random Thoughts", "Just some random musings", "red_orange"),
+    ("Bucket List", "Things to do before I die", "red_pink"),
+    ("Daily Journal", "Daily reflections and notes", "baby_blue"),
+    ("Workout Log", "Recording daily workout routines", "violet"),
+    ("Shopping List", "Items to buy for the house", "light_green"),
+    ("Movie Watchlist", "Movies I want to watch soon", "red_orange"),
+    ("Recipe Ideas", "New recipe concepts to explore", "red_pink"),
+    ("Travel Diary", "Recording travel experiences", "baby_blue"),
+    ("Birthday Plans", "Planning for upcoming birthdays", "violet"),
+    ("Artistic Creations", "Ideas for artistic projects", "light_green"),
+    ("Study Schedule", "Organizing study plans", "red_orange"),
+    ("Pet Care Notes", "Notes for taking care of pets", "red_pink"),
+    ("Home Improvement", "Projects to improve the house", "baby_blue"),
+    ("Financial Goals", "Savings and investment goals", "violet"),
+    ("Gaming Wishlist", "Video games to play in the future", "light_green"),
+    ("Fashion Ideas", "Fashion trends and outfit ideas", "red_orange"),
+    ("Event Planning", "Planning for upcoming events", "red_pink"),
+    ("Music Playlist", "Favorite songs and music recommendations", "baby_blue"),
+    ("To-Do List", "Daily tasks and to-do items", "violet"),
+    ("Test Row", "This is a test row", "light_green");
 """

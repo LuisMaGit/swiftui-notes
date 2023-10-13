@@ -5,7 +5,7 @@ import SQLite3
 class SqlManagerService: ISqlManagerService {
     let loggerService: LoggerService
     let fileManagerService: IFileManagerService
-
+    
     public init(
         loggerService: LoggerService = LoggerService(
             logFrom: "SqlManagerService"
@@ -15,14 +15,18 @@ class SqlManagerService: ISqlManagerService {
         self.loggerService = loggerService
         self.fileManagerService = fileManagerService
     }
-
+    
     private var db: OpaquePointer?
-
+    
     private var dbPath: String {
         fileManagerService.documentsPath().path() + NOTE_DB_NAME
     }
-
-    private func createDBSchema() -> Result<Never> {
+    
+    private func sqliteErrorMessage() -> String {
+        return String(cString: sqlite3_errmsg(db))
+    }
+    
+    private func createDBSchema() async -> Result<Never> {
         var createStatement: OpaquePointer?
         if sqlite3_prepare_v2(
             db,
@@ -37,21 +41,21 @@ class SqlManagerService: ISqlManagerService {
             sqlite3_finalize(createStatement)
             return Result.success()
         }
-
+        
         // error
         let errorMessage = "error creating db schema: \(sqliteErrorMessage())"
         return Result.error(
             message: errorMessage
         )
     }
-
-    private func createDBSchemaAndInsertDefData() -> Result<Never> {
+    
+    private func createDBSchemaAndInsertDefData() async -> Result<Never> {
         // create db schema
-        let resultCreateSchema = createDBSchema()
+        let resultCreateSchema = await createDBSchema()
         if resultCreateSchema != Result.success() {
             return resultCreateSchema
         }
-
+        
         // insert dumb data
         var insertStatment: OpaquePointer?
         if sqlite3_prepare_v2(
@@ -75,87 +79,83 @@ class SqlManagerService: ISqlManagerService {
         loggerService.error(errorMessage)
         return Result.error(message: errorMessage)
     }
-
-    private func sqliteErrorMessage() -> String {
-        return String(cString: sqlite3_errmsg(db))
-    }
-
-    func openDB() -> Result<Never> {
+    
+    func openDB() async -> Result<Never> {
         // 1- check for file
-        let dbFileExists = fileManagerService.existsFileInDocumments(
+        let dbFileExists = fileManagerService.existsFileInDocuments(
             file: NOTE_DB_NAME
         )
-
+        
         // 2- file exists-> open connection.
         // file no exists -> open connection an create schema
         if sqlite3_open(dbPath, &db) == SQLITE_OK {
             loggerService.verbose("db connection opened at: \(dbPath)")
             return dbFileExists ?
                 Result.success() :
-//                createDBSchema()
-                createDBSchemaAndInsertDefData()
+                //                createDBSchema()
+                await createDBSchemaAndInsertDefData()
         }
-
+        
         // 3- error
         let errorMessage = "db connection failed: \(sqliteErrorMessage())"
         return Result.error(
             message: errorMessage
         )
     }
-
-    func closeDb() {
+    
+    func closeDb() async {
         if sqlite3_close(db) == SQLITE_OK {
             loggerService.verbose("db connection closed")
             return
         }
-
+        
         // error
         loggerService.error(
             "db close operation failed: \(sqliteErrorMessage())"
         )
     }
-
+    
     func multipleRowsQuery(
         query: String,
         resultColumnMapper: [SqlManagerColumnTypeMapper]
-    ) -> AnyResult<[Int: [Any]]> {
+    ) async -> AnyResult<[Int: [Any]]> {
         // validation
         if resultColumnMapper.isEmpty {
             return AnyResult.error(message: "empty result mapper")
         }
-
+        
         // setup output
         var output: [Int: [Any]] = [:]
         for (index, _) in resultColumnMapper.enumerated() {
             output[index] = []
         }
-
+        
         // open db
-        if case let .error(message: message) = openDB() {
+        if case let .error(message: message) = await openDB() {
             return AnyResult.error(message: message)
         }
-
+        
         // run query
         var result: AnyResult<[Int: [Any]]>
-        var selectStatement: OpaquePointer?
+        var multipleRowStatement: OpaquePointer?
         if sqlite3_prepare(
             db,
             query,
             -1,
-            &selectStatement,
+            &multipleRowStatement,
             nil
         ) == SQLITE_OK { // success
-            while sqlite3_step(selectStatement) == SQLITE_ROW {
+            while sqlite3_step(multipleRowStatement) == SQLITE_ROW {
                 for (index, map) in resultColumnMapper.enumerated() {
                     switch map {
                     case .integer:
                         let result = sqlite3_column_int(
-                            selectStatement, Int32(index)
+                            multipleRowStatement, Int32(index)
                         )
                         output[index]?.append(Int(result))
                     case .text:
                         if let result = sqlite3_column_text(
-                            selectStatement, Int32(index)
+                            multipleRowStatement, Int32(index)
                         ) {
                             output[index]?.append(String(cString: result))
                         } else {
@@ -164,7 +164,7 @@ class SqlManagerService: ISqlManagerService {
                     }
                 }
             }
-            sqlite3_finalize(selectStatement)
+            sqlite3_finalize(multipleRowStatement)
             loggerService.verbose(
                 """
                   query: \(query)\n
@@ -174,12 +174,119 @@ class SqlManagerService: ISqlManagerService {
             result = AnyResult.success(data: output)
         } else { // error
             let errorMessage = "query: \(query) - not executed: \(sqliteErrorMessage())"
+            loggerService.error(errorMessage)
             result = AnyResult.error(
                 message: errorMessage
             )
         }
+        
+        await closeDb()
+        return result
+    }
+    
+    func noResultQuery(
+        query: String
+    ) async -> Result<Never> {
+        // open db
+        if case let .error(message: message) = await openDB() {
+            return Result.error(message: message)
+        }
+        
+        var sqlStatement: OpaquePointer?
+        if sqlite3_prepare_v2(
+            db,
+            query,
+            -1,
+            &sqlStatement,
+            nil
+        ) == SQLITE_OK &&
+            sqlite3_step(sqlStatement) == SQLITE_DONE
+        {
+            let result = sqlite3_column_int(
+                sqlStatement, 0
+            )
+            loggerService.verbose(
+                """
+                  query: \(query)\n
+                  result: \(String(describing: result))
+                """
+            )
+            sqlite3_finalize(sqlStatement)
+            await closeDb()
+            return Result.success()
+        }
+        
+        let errorMessage = "query: \(query) - not executed: \(sqliteErrorMessage())"
+        loggerService.error(errorMessage)
+        return Result.error(
+            message: errorMessage
+        )
+    }
+    
+    func singleRowQuery(
+        query: String,
+        resultColumnMapper: [SqlManagerColumnTypeMapper]
+    ) async -> AnyResult<[Int: Any]> {
+        // validation
+        if resultColumnMapper.isEmpty {
+            return AnyResult.error(message: "empty result mapper")
+        }
+        
+        // setup output
+        var output: [Int: Any] = [:]
 
-        closeDb()
+        // open db
+        if case let .error(message: message) = await openDB() {
+            return AnyResult.error(message: message)
+        }
+        
+        // run query
+        var result: AnyResult<[Int: Any]>
+        var singleRowStatement: OpaquePointer?
+        
+        if sqlite3_prepare(
+            db,
+            query,
+            -1,
+            &singleRowStatement,
+            nil
+        ) == SQLITE_OK &&
+            sqlite3_step(singleRowStatement) == SQLITE_ROW
+        {
+            for (index, map) in resultColumnMapper.enumerated() {
+                switch map {
+                case .integer:
+                    let result = sqlite3_column_int(
+                        singleRowStatement, Int32(index)
+                    )
+                    output[index]? = Int(result)
+                case .text:
+                    if let result = sqlite3_column_text(
+                        singleRowStatement, Int32(index)
+                    ) {
+                        output[index] = String(cString: result)
+                    } else {
+                        output[index] = ""
+                    }
+                }
+            }
+            sqlite3_finalize(singleRowStatement)
+            loggerService.verbose(
+                """
+                  query: \(query)\n
+                  result: \(String(describing: output))
+                """
+            )
+            result = AnyResult.success(data: output)
+        } else {
+            let errorMessage = "query: \(query) - not executed: \(sqliteErrorMessage())"
+            loggerService.error(errorMessage)
+            result = AnyResult.error(
+                message: errorMessage
+            )
+        }
+        
+        await closeDb()
         return result
     }
 }

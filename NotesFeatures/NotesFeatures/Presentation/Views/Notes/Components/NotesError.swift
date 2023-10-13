@@ -4,6 +4,7 @@ import SwiftUI
 struct NotesError: View {
     @EnvironmentObject var state: NotesState
     let sendEvent: (_ event: NotesVMEvents) -> Void
+    
     var body: some View {
         VStack {
             NotesHeader(
@@ -26,7 +27,7 @@ struct NotesError: View {
                 NSpace.k16
             )
             RippleButton(
-                action: {},
+                action: {sendEvent(.tryAgain)},
                 content: {
                     NText(
                         key: "try-again.label",
@@ -41,9 +42,15 @@ struct NotesError: View {
 
 struct NotesError_Previews: PreviewProvider {
     static var previews: some View {
-        NotesError(
-            state: .init(),
-            sendEvent: { _ in }
+        let vm: NotesVM = .init()
+        Notes(
+            sendEvent: vm.sendEvent
+        )
+        .environmentObject(
+            NotesState(
+                screenState: .error
+            )
         )
     }
 }
+

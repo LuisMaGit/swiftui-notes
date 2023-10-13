@@ -1,13 +1,15 @@
 import SwiftUI
 
-public struct RippleButtonStyles {
+public enum RippleButtonContracts {
     public static let paddingTransparent = NSpace.k8
     public static let colorTransparentRipple = NColors.backgroundLighter
     public static let opacityRippleColor = 0.7
+    public static let durationLongTap = 0.1
 }
 
 public struct RippleButton<Content: View>: View {
     let action: () -> Void
+    let longPressAction: (() -> Void)?
     let content: () -> Content
     let transparent: Bool
     let transparentPadding: Double
@@ -15,9 +17,10 @@ public struct RippleButton<Content: View>: View {
 
     public init(
         transparent: Bool = true,
-        transparentPadding: Double = RippleButtonStyles.paddingTransparent,
+        transparentPadding: Double = RippleButtonContracts.paddingTransparent,
         fixedFeedback: Bool = false,
         action: @escaping () -> Void,
+        longPressAction: (() -> Void)? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.action = action
@@ -25,12 +28,25 @@ public struct RippleButton<Content: View>: View {
         self.transparentPadding = transparentPadding
         self.fixedFeedback = fixedFeedback
         self.content = content
+        self.longPressAction = longPressAction
     }
 
     public var body: some View {
         Button(
-            action: self.action,
-            label: self.content
+            action: {},
+            label: {
+                content()
+                    .onTapGesture {
+                        action()
+                    }
+                    .onLongPressGesture(
+                        minimumDuration: RippleButtonContracts.durationLongTap
+                    ) {
+                        if let lp = longPressAction {
+                            lp()
+                        }
+                    }
+            }
         ).buttonStyle(
             RippleButtonStyle(
                 transparent: transparent,
@@ -62,8 +78,8 @@ public struct RippleButtonStyle: ButtonStyle {
         let label = configuration.label
         let isPressed = configuration.isPressed
         if transparent {
-            let color = RippleButtonStyles.colorTransparentRipple.opacity(
-                RippleButtonStyles.opacityRippleColor
+            let color = RippleButtonContracts.colorTransparentRipple.opacity(
+                RippleButtonContracts.opacityRippleColor
             )
             label
                 .padding(.all, transparentPadding)
@@ -78,8 +94,8 @@ public struct RippleButtonStyle: ButtonStyle {
                 }
         } else {
             label.opacity(
-                fixedFeedback ? RippleButtonStyles.opacityRippleColor :
-                    isPressed ? RippleButtonStyles.opacityRippleColor : 1
+                fixedFeedback ? RippleButtonContracts.opacityRippleColor :
+                    isPressed ? RippleButtonContracts.opacityRippleColor : 1
             )
         }
     }
@@ -128,6 +144,7 @@ struct RippleButton_Previews: PreviewProvider {
                         }
                 }
             )
-        }.background(Color.blue)
+        }
+        .background(Color.blue)
     }
 }

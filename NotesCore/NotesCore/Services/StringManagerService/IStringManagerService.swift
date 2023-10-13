@@ -6,4 +6,8 @@ public protocol IStringManagerService {
         of: String,
         amount: Int
     ) -> String
+    
+    func splitWithCommasInParenthesis(
+        of: [Int]
+    ) -> String
 }

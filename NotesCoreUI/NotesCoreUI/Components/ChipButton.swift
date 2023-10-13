@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-public struct ChipButtonStyles {
+public enum ChipButtonStyles {
     static let lineWidth = 2.0
     static let colorActive = NColors.backgroundInverse
     static let colorUnactive = NColors.background
@@ -38,9 +38,8 @@ public struct ChipButton: View {
                 textView
                     .background {
                         rectangle
-                            .stroke(lineWidth: ChipButtonStyles.lineWidth)
-                            .fill(ChipButtonStyles.colorActive)
-                            .background(ChipButtonStyles.colorUnactive)
+                            .stroke(
+                                lineWidth: ChipButtonStyles.lineWidth)
                     }
             }
         }

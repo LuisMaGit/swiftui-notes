@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Pagination<T : Equatable>: Equatable {
+public struct Pagination<T: Equatable>: Equatable {
     public let page: Int
     public let data: [T]
     public var nextPage: Int { page + 1 }
@@ -13,17 +13,17 @@ public struct Pagination<T : Equatable>: Equatable {
         self.data = data
     }
 
-    public static func initial<T>() -> Pagination<T> {
-        return Pagination<T>(
+    public static func initial() -> Pagination {
+        return Pagination(
             page: 0,
             data: []
         )
     }
 
-    public func addPage<T>(newData: [T]) -> Pagination<T> {
-        var updatedData = newData.map { value in value }
+    public func addPage(newData: [T]) -> Pagination {
+        var updatedData = data.map { value in value }
         updatedData.append(contentsOf: newData)
-        return Pagination<T>(
+        return Pagination(
             page: nextPage,
             data: updatedData
         )

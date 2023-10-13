@@ -62,4 +62,26 @@ public class IStringManagerServiceMock: IStringManagerService {
         }
     }
 
+    //MARK: - splitWithCommasInParenthesis
+
+    public var splitWithCommasInParenthesisOfCallsCount = 0
+    public var splitWithCommasInParenthesisOfCalled: Bool {
+        return splitWithCommasInParenthesisOfCallsCount > 0
+    }
+    public var splitWithCommasInParenthesisOfReceivedOf: ([Int])?
+    public var splitWithCommasInParenthesisOfReceivedInvocations: [([Int])] = []
+    public var splitWithCommasInParenthesisOfReturnValue: String!
+    public var splitWithCommasInParenthesisOfClosure: (([Int]) -> String)?
+
+    public func splitWithCommasInParenthesis(of: [Int]) -> String {
+        splitWithCommasInParenthesisOfCallsCount += 1
+        splitWithCommasInParenthesisOfReceivedOf = of
+        splitWithCommasInParenthesisOfReceivedInvocations.append(of)
+        if let splitWithCommasInParenthesisOfClosure = splitWithCommasInParenthesisOfClosure {
+            return splitWithCommasInParenthesisOfClosure(of)
+        } else {
+            return splitWithCommasInParenthesisOfReturnValue
+        }
+    }
+
 }

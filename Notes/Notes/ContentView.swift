@@ -3,16 +3,26 @@ import NotesFeatures
 import SwiftUI
 
 struct ContentView: View {
-    let notesVM: NotesVM
+//    let notesVM: NotesVM
+    let noteDetailsVM : NoteDetailsVM
 
     init() {
-        notesVM = NotesVM()
+//        notesVM = NotesVM()
+        noteDetailsVM = NoteDetailsVM(
+            screenType: .edit,
+            noteId: 19
+        )
     }
 
     var body: some View {
-        Notes(
-            sendEvent: notesVM.sendEvent
-        ).environmentObject(notesVM.state)
+//        Notes(
+//            sendEvent: notesVM.sendEvent
+//        )
+//        .environmentObject(notesVM.state)
+        NoteDetails(
+            sendEvent: { _ in }
+        )
+        .environmentObject(noteDetailsVM.state)
     }
 }
 

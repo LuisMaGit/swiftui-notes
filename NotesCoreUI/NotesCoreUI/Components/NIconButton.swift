@@ -1,13 +1,12 @@
 
-import NotesCoreUI
 import SwiftUI
 
-struct NotesHeaderRippleButtonIcon: View {
+public struct NIconButton: View {
     let action: () -> Void
     let icon: NIconsType
     let fixedFeedBack: Bool
 
-    init(
+    public init(
         action: @escaping () -> Void,
         icon: NIconsType,
         fixedFeedBack: Bool = false
@@ -17,7 +16,7 @@ struct NotesHeaderRippleButtonIcon: View {
         self.fixedFeedBack = fixedFeedBack
     }
 
-    var body: some View {
+    public var body: some View {
         RippleButton(
             fixedFeedback: fixedFeedBack,
             action: action,
@@ -28,9 +27,9 @@ struct NotesHeaderRippleButtonIcon: View {
     }
 }
 
-struct NotesHeaderRippleButtonIcon_Previews: PreviewProvider {
+struct NIconButton_Previews: PreviewProvider {
     static var previews: some View {
-        NotesHeaderRippleButtonIcon(
+        NIconButton(
             action: {},
             icon: .magnifyingglass,
             fixedFeedBack: true
