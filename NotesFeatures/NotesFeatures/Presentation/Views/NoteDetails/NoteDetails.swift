@@ -3,10 +3,10 @@ import SwiftUI
 
 public struct NoteDetails: View {
     @EnvironmentObject var state: NoteDetailsState
-    let sendEvent: (NotesVMEvents) -> Void
+    let sendEvent: (NoteDetailsEvents) -> Void
 
     public init(
-        sendEvent: @escaping (NotesVMEvents) -> Void
+        sendEvent: @escaping (NoteDetailsEvents) -> Void
     ) {
         self.sendEvent = sendEvent
     }

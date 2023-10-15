@@ -72,7 +72,7 @@ public class NotesService: INotesService {
                         raw: sourceValidated[3]?[rowIdx] as? String ?? base.color.rawValue
                     )
                     // date: 4
-                    let creationDate = timeService.dateToDateVisualizer(
+                    let lastEditDate = timeService.dateToDateVisualizer(
                         source: sourceValidated[4]?[rowIdx] as? String
                     )
                     let shortContent = stringService.getFirstChars(
@@ -85,7 +85,7 @@ public class NotesService: INotesService {
                         content: content,
                         shortContent: shortContent,
                         color: color,
-                        creationDate: creationDate
+                        lastEditDate: lastEditDate
                     )
                     notes.append(note)
                 }
@@ -219,7 +219,7 @@ public class NotesService: INotesService {
                     raw: sourceValidated[3] as? String ?? base.color.rawValue
                 )
                 // date: 4
-                let creationDate = timeService.dateToDateVisualizer(
+                let lastEditDate = timeService.dateToDateVisualizer(
                     source: sourceValidated[4] as? String
                 )
                 let shortContent = stringService.getFirstChars(
@@ -232,7 +232,7 @@ public class NotesService: INotesService {
                     content: content,
                     shortContent: shortContent,
                     color: color,
-                    creationDate: creationDate
+                    lastEditDate: lastEditDate
                 )
 
                 return Result.success(data: note)
@@ -242,5 +242,30 @@ public class NotesService: INotesService {
                 return Result.success()
             }
         }
+    }
+
+    public func updateNote(
+        note: Note
+    ) async -> Result<Never> {
+        return await sqlManagerService.noResultQuery(
+            query: updateNoteById(
+                id: note.id,
+                title: note.title,
+                content: note.content,
+                color: note.color.rawValue
+            )
+        )
+    }
+
+    public func createNote(
+        note: Note
+    ) async -> Result<Never> {
+        return await sqlManagerService.noResultQuery(
+            query: insertNote(
+                title: note.title,
+                content: note.content,
+                color: note.color.rawValue
+            )
+        )
     }
 }

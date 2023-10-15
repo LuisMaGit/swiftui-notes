@@ -2,15 +2,20 @@ import SwiftUI
 
 public struct NEditorHint: View {
     let key: LocalizedStringKey
+    let color : Color
 
-    public init(key: LocalizedStringKey) {
+    public init(
+        key: LocalizedStringKey,
+        color: Color = NColors.backgroundInverse
+    ) {
         self.key = key
+        self.color = color
     }
 
     public var body: some View {
         NText(
             key: key,
-            color: NColors.backgroundInverse
+            color: color
         )
         .allowsHitTesting(false)
     }

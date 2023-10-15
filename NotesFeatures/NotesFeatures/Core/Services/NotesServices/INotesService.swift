@@ -29,4 +29,12 @@ public protocol INotesService {
     func getNoteById(
         id: Int
     ) async -> Result<Note?>
+    
+    func updateNote(
+        note: Note
+    ) async -> Result<Never>
+    
+    func createNote(
+        note: Note
+    ) async -> Result<Never>
 }

@@ -2,16 +2,36 @@ import NotesCoreUI
 import SwiftUI
 
 struct NoteSuccess: View {
-    @EnvironmentObject var state: NoteDetailsState
-    let sendEvent: (_ event: NotesVMEvents) -> Void
+    @EnvironmentObject private var state: NoteDetailsState
+    let sendEvent: (_ event: NoteDetailsEvents) -> Void
 
     var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            floatingButton
+                .padding(
+                    .all,
+                    NSpace.k16
+                )
+        }
+    }
+
+    var floatingButton: some View {
+        FloatingCircleButton(
+            onTap: { sendEvent(.submit) }
+        )
+    }
+
+    var content: some View {
         let background = NotesColorsUtils.notesColorMap[state.color] ?? NColors.background
-        VStack(spacing: 0) {
+        return VStack(spacing: 0) {
             // color
             ColorSelector(
                 colors: NotesColorsUtils.nColors,
-                onTapColor: { _ in },
+                onTapColor: { idx in
+                    let color = NotesColorsUtils.noteColors[idx]
+                    sendEvent(.setColor(color: color))
+                },
                 selectedColor: NotesColorsUtils.noteColors.firstIndex(
                     of: state.color
                 ) ?? 0
@@ -20,12 +40,16 @@ struct NoteSuccess: View {
                 .bottom, NSpace.k16
             )
             .background(background)
+
             // title
             NTextField(
                 text: state.title,
                 backgroundColor: background,
-                onChange: { _ in },
-                hintKey: "notes-details.title.hint"
+                onChange: { value in
+                    sendEvent(.setTitle(title: value))
+                },
+                hintKey: "notes-details.title.hint",
+                textHandleHintColor: NColors.backgroundInverseLight
             )
             .submitLabel(.continue)
             .padding(
@@ -34,11 +58,13 @@ struct NoteSuccess: View {
             // note
             NTextEditor(
                 text: state.note,
-                onChange: { _ in },
+                onChange: { value in
+                    sendEvent(.setNote(note: value))
+                },
                 backgroundColor: background,
-                hintKey: "notes-details.title.note"
+                hintKey: "notes-details.title.note",
+                textHandleHintColor: NColors.backgroundInverseLight
             )
-            .submitLabel(.continue)
         }
         .nHPadding()
         .background(background)

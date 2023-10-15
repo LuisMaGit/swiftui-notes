@@ -12,8 +12,16 @@ CREATE TABLE Notes (
     title TEXT,
     content TEXT,
     color TEXT,
-    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_edit_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+"""
+
+let CREATE_UPDATE_LAST_EDIT_DATE_TRIGGER = """
+CREATE TRIGGER update_last_edit UPDATE OF title, content, color ON Notes
+    BEGIN
+        UPDATE Notes SET last_edit_date = CURRENT_TIMESTAMP WHERE Notes.rowid = old.rowid;
+    END;
 """
 
 let INSERT_DUMB_DATA_NOTES_TABLE = """

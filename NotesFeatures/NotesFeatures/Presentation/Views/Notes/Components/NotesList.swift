@@ -41,10 +41,10 @@ struct NotesList: View {
                 Note.DEFAULT_COLOR
             ]!,
             date: CoreUIUtils.dateFromDateVisualizer(
-                dateVisualizer: note.creationDate
+                dateVisualizer: note.lastEditDate
             ),
             time: CoreUIUtils.timeFromDateVisualizer(
-                dateVisualizer: note.creationDate
+                dateVisualizer: note.lastEditDate
             ),
             onTap: {
                 sendEvent(.onTapNote(idx: idx))

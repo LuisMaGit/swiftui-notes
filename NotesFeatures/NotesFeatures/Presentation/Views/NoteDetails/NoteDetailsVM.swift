@@ -37,14 +37,14 @@ public class NoteDetailsVM {
         event: NoteDetailsEvents
     ) {
         switch event {
-        case .setColor(color: _):
-            print("")
-        case .setTitle(title: _):
-            print("")
-        case .setNote(note: _):
-            print("")
+        case let .setColor(color: color):
+            setColor(color: color)
+        case let .setTitle(title: title):
+            setTitle(value: title)
+        case let .setNote(note: note):
+            setNote(note: note)
         case .submit:
-            print("")
+            submit()
         case let .getNote(noteId: noteId):
             getNoteById(noteId: noteId)
         }
@@ -58,15 +58,15 @@ public class NoteDetailsVM {
             state.screenState = .success
         }
     }
-        
+    
     private func getNoteById(noteId: Int) {
         state.screenState = .loading
-            
+        
         Task {
             let result = await notesSqlService.getNoteById(id: noteId)
             switch result {
             case let .success(data: data):
-                    
+                
                 // error
                 guard let nilNote = data,
                       let note = nilNote
@@ -74,7 +74,7 @@ public class NoteDetailsVM {
                     state.screenState = .error
                     return
                 }
-                    
+                
                 // succes
                 await MainActor.run {
                     state.title = note.title
@@ -86,6 +86,48 @@ public class NoteDetailsVM {
                 await MainActor.run {
                     state.screenState = .error
                 }
+            }
+        }
+    }
+    
+    private func setColor(color: NoteColor) {
+        if state.color == color {
+            return
+        }
+        
+        state.color = color
+    }
+    
+    private func setTitle(value: String) {
+        state.title = value
+    }
+    
+    private func setNote(note: String) {
+        state.note = note
+    }
+    
+    private func submit() {
+        switch screenType {
+        case .edit:
+            Task {
+                await notesSqlService.updateNote(
+                    note: Note(
+                        id: noteId!,
+                        title: state.title,
+                        content: state.note,
+                        color: state.color
+                    )
+                )
+            }
+        case .create:
+            Task {
+                await notesSqlService.createNote(
+                    note: Note(
+                        title: state.title,
+                        content: state.note,
+                        color: state.color
+                    )
+                )
             }
         }
     }

@@ -22,6 +22,7 @@
 		D64D62862AA1E91B00D310D6 /* NIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D62852AA1E91B00D310D6 /* NIcons.swift */; };
 		D64D62882AA1ECDA00D310D6 /* RippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D62872AA1ECDA00D310D6 /* RippleButton.swift */; };
 		D64D628D2AA2116600D310D6 /* NSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64D628C2AA2116600D310D6 /* NSearchField.swift */; };
+		D671707E2ADB382C0043B419 /* FloatingCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671707D2ADB382C0043B419 /* FloatingCircleButton.swift */; };
 		D6867E8E2ACB09970006C5B6 /* ExtensionUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6867E8D2ACB09970006C5B6 /* ExtensionUI.swift */; };
 		D68D1EBC2AA6263000A864BA /* ChipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D1EBB2AA6263000A864BA /* ChipButton.swift */; };
 		D699E3E62AD7108500FE6F32 /* NIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699E3E52AD7108500FE6F32 /* NIconButton.swift */; };
@@ -65,6 +66,7 @@
 		D64D62852AA1E91B00D310D6 /* NIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIcons.swift; sourceTree = "<group>"; };
 		D64D62872AA1ECDA00D310D6 /* RippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleButton.swift; sourceTree = "<group>"; };
 		D64D628C2AA2116600D310D6 /* NSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSearchField.swift; sourceTree = "<group>"; };
+		D671707D2ADB382C0043B419 /* FloatingCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCircleButton.swift; sourceTree = "<group>"; };
 		D6867E8D2ACB09970006C5B6 /* ExtensionUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUI.swift; sourceTree = "<group>"; };
 		D68D1EBB2AA6263000A864BA /* ChipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipButton.swift; sourceTree = "<group>"; };
 		D699E3E52AD7108500FE6F32 /* NIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIconButton.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				D631C9282AD715EF006FDBB6 /* NTextField.swift */,
 				D631C92A2AD71600006FDBB6 /* NTextEditor.swift */,
 				D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */,
+				D671707D2ADB382C0043B419 /* FloatingCircleButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				D6E7B6FB2A98FFC5008706F8 /* NotesCoreUIContracts.swift in Sources */,
 				D6BBCF302AC5A649001F7233 /* NLoader.swift in Sources */,
 				D6867E8E2ACB09970006C5B6 /* ExtensionUI.swift in Sources */,
+				D671707E2ADB382C0043B419 /* FloatingCircleButton.swift in Sources */,
 				D6E7B6F12A98F66C008706F8 /* CoreUIUtils.swift in Sources */,
 				D631C92B2AD71600006FDBB6 /* NTextEditor.swift in Sources */,
 				D6435C902ACDAF32007F5B8F /* CircleColor.swift in Sources */,

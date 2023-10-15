@@ -26,19 +26,19 @@ class SqlManagerService: ISqlManagerService {
         return String(cString: sqlite3_errmsg(db))
     }
     
-    private func createDBSchema() async -> Result<Never> {
-        var createStatement: OpaquePointer?
+    private func createNotesTable() async -> Result<Never> {
+        var createTableStatement: OpaquePointer?
         if sqlite3_prepare_v2(
             db,
             CREATE_NOTES_TABLE,
             -1,
-            &createStatement,
+            &createTableStatement,
             nil
         ) == SQLITE_OK,
-            sqlite3_step(createStatement) == SQLITE_DONE
+            sqlite3_step(createTableStatement) == SQLITE_DONE
         {
             loggerService.verbose("db schema created")
-            sqlite3_finalize(createStatement)
+            sqlite3_finalize(createTableStatement)
             return Result.success()
         }
         
@@ -47,6 +47,40 @@ class SqlManagerService: ISqlManagerService {
         return Result.error(
             message: errorMessage
         )
+    }
+    
+    private func createNotesTrigger() async -> Result<Never>{
+        var createTriggerStatement: OpaquePointer?
+        if sqlite3_prepare_v2(
+            db,
+            CREATE_UPDATE_LAST_EDIT_DATE_TRIGGER,
+            -1,
+            &createTriggerStatement,
+            nil
+        ) == SQLITE_OK,
+            sqlite3_step(createTriggerStatement) == SQLITE_DONE
+        {
+            loggerService.verbose("update_last_edit notes trigger created")
+            sqlite3_finalize(createTriggerStatement)
+            return Result.success()
+        }
+
+        // error
+        let errorMessage = "error creating update_last_edit notes trigger: \(sqliteErrorMessage())"
+        return Result.error(
+            message: errorMessage
+        )
+    }
+    
+    private func createDBSchema() async -> Result<Never> {
+        // create notes table
+        let resultCreateNotesTable = await createNotesTable()
+        if resultCreateNotesTable != Result.success() {
+            return resultCreateNotesTable
+        }
+        
+        // create notes trigger
+        return await createNotesTrigger()
     }
     
     private func createDBSchemaAndInsertDefData() async -> Result<Never> {

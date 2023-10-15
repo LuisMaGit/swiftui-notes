@@ -6,18 +6,24 @@ public struct NTextField: View {
     let hintKey: LocalizedStringKey
     let onChange: (String) -> Void
     let backgroundColor: Color
+    let textHandleHintColor: Color
+    let lineLimit: Int
 
     public init(
         text: String,
         backgroundColor: Color,
         onChange: @escaping (String) -> Void,
-        hintKey: LocalizedStringKey
+        hintKey: LocalizedStringKey,
+        textHandleHintColor: Color = NColors.backgroundInverse,
+        lineLimit : Int = 2
     ) {
         _text = State(initialValue: text)
         _showHint = State(initialValue: text.isEmpty)
         self.backgroundColor = backgroundColor
         self.onChange = onChange
         self.hintKey = hintKey
+        self.textHandleHintColor = textHandleHintColor
+        self.lineLimit = 2
     }
 
     public var body: some View {
@@ -30,19 +36,20 @@ public struct NTextField: View {
                 showHint = text.isEmpty
                 onChange(new)
             }
-            .tint(NColors.backgroundInverse)
+            .tint(textHandleHintColor)
+            .foregroundColor(textHandleHintColor)
             .padding(.vertical, NSpace.k16)
             .background(backgroundColor)
-            .lineLimit(2)
+            .lineLimit(lineLimit)
             if showHint {
                 NEditorHint(
-                    key: hintKey
+                    key: hintKey,
+                    color: textHandleHintColor.opacity(0.7)
                 )
             }
         }
     }
 }
-
 
 struct NTextField_Previews: PreviewProvider {
     static var previews: some View {

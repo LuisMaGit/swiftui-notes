@@ -8,7 +8,7 @@ public struct Note: Equatable {
     let content: String
     let shortContent: String
     let color: NoteColor
-    let creationDate: DateVisualizer?
+    let lastEditDate: DateVisualizer?
 
     public init(
         id: Int = -1,
@@ -16,14 +16,14 @@ public struct Note: Equatable {
         content: String = "",
         shortContent: String = "",
         color: NoteColor = NoteColor.lightGreen,
-        creationDate: DateVisualizer? = nil
+        lastEditDate: DateVisualizer? = nil
     ) {
         self.id = id
         self.title = title
         self.content = content
         self.shortContent = shortContent
         self.color = color
-        self.creationDate = creationDate
+        self.lastEditDate = lastEditDate
     }
 
     public static let DEFAULT_COLOR = NoteColor.babyBlue

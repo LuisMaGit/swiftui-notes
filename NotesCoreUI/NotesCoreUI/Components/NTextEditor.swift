@@ -6,18 +6,22 @@ public struct NTextEditor: View {
     let onChange: (String) -> Void
     let backgroundColor: Color
     let hintKey: LocalizedStringKey
+    let textHandleHintColor: Color
+    
 
     public init(
         text: String,
         onChange: @escaping (String) -> Void,
         backgroundColor: Color,
-        hintKey: LocalizedStringKey
+        hintKey: LocalizedStringKey,
+        textHandleHintColor: Color = NColors.backgroundInverse
     ) {
         _text = State(initialValue: text)
         _showHint = State(initialValue: text.isEmpty)
         self.onChange = onChange
         self.backgroundColor = backgroundColor
         self.hintKey = hintKey
+        self.textHandleHintColor = textHandleHintColor
     }
 
     public var body: some View {
@@ -26,7 +30,8 @@ public struct NTextEditor: View {
         ) {
             TextEditor(text: $text)
                 .padding(.leading, -5)
-                .tint(NColors.backgroundInverse)
+                .tint(textHandleHintColor)
+                .foregroundColor(textHandleHintColor)
                 .scrollContentBackground(.hidden)
                 .onChange(of: text) { _ in
                     onChange(text)
@@ -34,7 +39,8 @@ public struct NTextEditor: View {
                 }
             if showHint {
                 NEditorHint(
-                    key: hintKey
+                    key: hintKey,
+                    color: textHandleHintColor.opacity(0.7)
                 )
                 .padding(.top, NSpace.k8)
             }

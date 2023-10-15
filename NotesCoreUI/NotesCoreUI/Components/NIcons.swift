@@ -6,6 +6,7 @@ public enum NIconsType: String {
     case xmark
     case trash
     case multiplyCircle = "multiply.circle"
+    case checkmark
 }
 
 public struct NIcons: View {
