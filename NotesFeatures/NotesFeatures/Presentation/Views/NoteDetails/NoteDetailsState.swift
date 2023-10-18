@@ -1,11 +1,11 @@
 import Foundation
 import NotesCore
 
-public class NoteDetailsState: ObservableObject {
-    @Published var color: NoteColor
-    @Published var title: String
-    @Published var note: String
-    @Published var screenState: BasicScreenState
+public struct NoteDetailsState {
+    var color: NoteColor
+    var title: String
+    var note: String
+    var screenState: BasicScreenState
 
     public init(
         color: NoteColor = Note.DEFAULT_COLOR,
@@ -18,9 +18,4 @@ public class NoteDetailsState: ObservableObject {
         self.note = note
         self.screenState = screenState
     }
-}
-
-public enum NoteDetailsType {
-    case edit
-    case create
 }

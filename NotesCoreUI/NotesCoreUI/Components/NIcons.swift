@@ -7,6 +7,8 @@ public enum NIconsType: String {
     case trash
     case multiplyCircle = "multiply.circle"
     case checkmark
+    case back = "arrow.backward"
+    case plus
 }
 
 public struct NIcons: View {
@@ -37,7 +39,7 @@ public struct NIcons: View {
 struct NIcons_Previews: PreviewProvider {
     static var previews: some View {
         NIcons(
-            type: .horizontaldecrease
+            type: .back
         )
     }
 }

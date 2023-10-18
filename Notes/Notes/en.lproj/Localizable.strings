@@ -11,4 +11,8 @@
 "notes.header.filter.color.button" = "Color";
 "notes-details.title.hint" = "Title";
 "notes-details.title.note" = "Note";
+"snackbar.note-deleted.title" = "Note(s) deleted";
+"snackbar.note-added.title" = "Note added";
+"snackbar.note-edited.title" = "Note edited";
+"snackbar.error.title" = "Something went wrong :(";
 

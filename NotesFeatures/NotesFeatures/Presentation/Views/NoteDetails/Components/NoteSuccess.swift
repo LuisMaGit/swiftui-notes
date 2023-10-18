@@ -2,8 +2,7 @@ import NotesCoreUI
 import SwiftUI
 
 struct NoteSuccess: View {
-    @EnvironmentObject private var state: NoteDetailsState
-    let sendEvent: (_ event: NoteDetailsEvents) -> Void
+    @EnvironmentObject var viewmodel: NoteDetailsVM
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -18,35 +17,50 @@ struct NoteSuccess: View {
 
     var floatingButton: some View {
         FloatingCircleButton(
-            onTap: { sendEvent(.submit) }
+            onTap: { viewmodel.sendEvent(.submit) },
+            icon: .checkmark
         )
     }
 
     var content: some View {
-        let background = NotesColorsUtils.notesColorMap[state.color] ?? NColors.background
+        let background = NotesColorsUtils.notesColorMap[viewmodel.state.color] ?? NColors.background
         return VStack(spacing: 0) {
-            // color
-            ColorSelector(
-                colors: NotesColorsUtils.nColors,
-                onTapColor: { idx in
-                    let color = NotesColorsUtils.noteColors[idx]
-                    sendEvent(.setColor(color: color))
-                },
-                selectedColor: NotesColorsUtils.noteColors.firstIndex(
-                    of: state.color
-                ) ?? 0
-            )
-            .padding(
-                .bottom, NSpace.k16
-            )
-            .background(background)
+            // header
+            ZStack(
+                alignment: .leading
+            ) {
+                // color
+                ColorSelector(
+                    colors: NotesColorsUtils.nColors,
+                    onTapColor: { idx in
+                        let color = NotesColorsUtils.noteColors[idx]
+                        viewmodel.sendEvent(.setColor(color: color))
+                    },
+                    selectedColor: NotesColorsUtils.noteColors.firstIndex(
+                        of: viewmodel.state.color
+                    ) ?? 0
+                )
+                .padding(
+                    .bottom, NSpace.k16
+                )
+                .background(background)
+                // back
+                NIconButton(
+                    action: {
+                        viewmodel.sendEvent(.goBack)
+                    },
+                    icon: .back,
+                    iconColor: NColors.backgroundInverse
+                )
+                .padding(.bottom, NSpace.k16)
+            }
 
             // title
             NTextField(
-                text: state.title,
+                text: viewmodel.state.title,
                 backgroundColor: background,
                 onChange: { value in
-                    sendEvent(.setTitle(title: value))
+                    viewmodel.sendEvent(.setTitle(title: value))
                 },
                 hintKey: "notes-details.title.hint",
                 textHandleHintColor: NColors.backgroundInverseLight
@@ -57,9 +71,9 @@ struct NoteSuccess: View {
             )
             // note
             NTextEditor(
-                text: state.note,
+                text: viewmodel.state.note,
                 onChange: { value in
-                    sendEvent(.setNote(note: value))
+                    viewmodel.sendEvent(.setNote(note: value))
                 },
                 backgroundColor: background,
                 hintKey: "notes-details.title.note",
@@ -73,13 +87,13 @@ struct NoteSuccess: View {
 
 struct NoteSuccess_Previews: PreviewProvider {
     static var previews: some View {
-        NoteSuccess(
-            sendEvent: { _ in }
-        )
-        .environmentObject(
-            NoteDetailsState(
-                color: .lightGreen
+        NoteSuccess()
+            .environmentObject(
+                NoteDetailsVM(
+                    state: NoteDetailsState(
+                        color: .babyBlue
+                    )
+                )
             )
-        )
     }
 }

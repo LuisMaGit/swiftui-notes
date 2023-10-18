@@ -3,22 +3,21 @@ import NotesCoreUI
 import SwiftUI
 
 struct NotesList: View {
-    @EnvironmentObject var state: NotesState
-    let sendEvent: (_ event: NotesVMEvents) -> Void
+    @EnvironmentObject var viewmodel: NotesVM
 
     var body: some View {
-        let allNotes = state.notes.data
+        let allNotes = viewmodel.state.notes.data
         wrapper {
             ForEach(
                 allNotes.indices,
                 id: \.self
             ) { idx in
-                let note = state.notes.data[idx]
+                let note = viewmodel.state.notes.data[idx]
                 cardBuilder(
                     idx: idx,
                     note: note,
                     isLastView: idx == allNotes.count - 1,
-                    selected: state.notesSelectedMap[idx] ?? false
+                    selected: viewmodel.state.notesSelectedMap[idx] ?? false
                 )
             }
         }
@@ -32,29 +31,29 @@ struct NotesList: View {
         selected: Bool
     ) -> some View {
         let noteView = NoteCard(
-            title: note.title,
-            content: note.shortContent,
-            selected: selected,
-            color: NotesColorsUtils.notesColorMap[
-                note.color
-            ] ?? NotesColorsUtils.notesColorMap[
-                Note.DEFAULT_COLOR
-            ]!,
-            date: CoreUIUtils.dateFromDateVisualizer(
-                dateVisualizer: note.lastEditDate
-            ),
-            time: CoreUIUtils.timeFromDateVisualizer(
-                dateVisualizer: note.lastEditDate
-            ),
-            onTap: {
-                sendEvent(.onTapNote(idx: idx))
-            },
-            onLongPress: {
-                sendEvent(.onLongPressNote(idx: idx))
-            }
-        )
+                title: note.title,
+                content: note.shortContent,
+                selected: selected,
+                color: NotesColorsUtils.notesColorMap[
+                    note.color
+                ] ?? NotesColorsUtils.notesColorMap[
+                    Note.DEFAULT_COLOR
+                ]!,
+                date: CoreUIUtils.dateFromDateVisualizer(
+                    dateVisualizer: note.lastEditDate
+                ),
+                time: CoreUIUtils.timeFromDateVisualizer(
+                    dateVisualizer: note.lastEditDate
+                ),
+                onTap: {
+                    viewmodel.sendEvent(.onTapNote(idx: idx))
+                },
+                onLongPress: {
+                    viewmodel.sendEvent(.onLongPressNote(idx: idx))
+                }
+            )
 
-        if isLastView, state.showLoadingMore {
+        if isLastView, viewmodel.state.showLoadingMore {
             VStack {
                 noteView
                 loaderView
@@ -69,7 +68,7 @@ struct NotesList: View {
         NLoader()
             .padding(.vertical, NSpace.k8)
             .onAppear {
-                sendEvent(.triggerNextPage)
+                viewmodel.sendEvent(.triggerNextPage)
             }
     }
 
@@ -86,9 +85,7 @@ struct NotesList: View {
                 pinnedViews: [.sectionHeaders]
             ) {
                 Section(
-                    header: NotesHeader(
-                        sendEvent: sendEvent
-                    )
+                    header: NotesHeader()
                 ) {
                     content()
                 }
@@ -105,8 +102,7 @@ struct NotesList: View {
 
 struct NotesSuccess_Previews: PreviewProvider {
     static var previews: some View {
-        let vm: NotesVM = .init()
-        let notesIdxs = Array(0 ..< 5)
+        let notesIdxs = Array(0 ..< 2)
         let notes = Pagination(
             page: 1,
             data: notesIdxs
@@ -130,9 +126,7 @@ struct NotesSuccess_Previews: PreviewProvider {
             showLoadingMore: true,
             selectedNotes: selected
         )
-        return Notes(
-            sendEvent: vm.sendEvent
-        )
-        .environmentObject(state)
+        return NotesList()
+            .environmentObject(NotesVM(state: state))
     }
 }

@@ -1,28 +1,41 @@
+import NotesCore
 import NotesCoreUI
 import SwiftUI
 
 public struct NoteDetails: View {
-    @EnvironmentObject var state: NoteDetailsState
-    let sendEvent: (NoteDetailsEvents) -> Void
+    @StateObject var viewmodel = NoteDetailsVM()
+    let screenType: FormScreenType
+    let noteId: Int?
 
     public init(
-        sendEvent: @escaping (NoteDetailsEvents) -> Void
+        screenType: FormScreenType,
+        noteId: Int?
     ) {
-        self.sendEvent = sendEvent
+        self.screenType = screenType
+        self.noteId = noteId
     }
 
     public var body: some View {
-        switch state.screenState {
-            case .loading:
-                NoteLoading()
-            case .error:
-                NoteError()
-            case .success:
-                NoteSuccess(
-                    sendEvent: sendEvent
+        Group {
+            switch viewmodel.state.screenState {
+                case .loading:
+                    NoteLoading()
+                case .error:
+                    NoteError()
+                case .success:
+                    NoteSuccess()
+                default:
+                    Rectangle()
+            }
+        }
+        .environmentObject(viewmodel)
+        .onAppear {
+            viewmodel.sendEvent(
+                .onAppear(
+                    noteId: noteId,
+                    screenType: screenType
                 )
-            default:
-                Rectangle()
+            )
         }
     }
 }
@@ -30,7 +43,9 @@ public struct NoteDetails: View {
 struct NoteDetails_Previews: PreviewProvider {
     static var previews: some View {
         NoteDetails(
-            sendEvent: { _ in }
+            screenType: .create,
+            noteId: 1
         )
+        .environmentObject(NotesVM())
     }
 }

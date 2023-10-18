@@ -2,14 +2,11 @@ import NotesCoreUI
 import SwiftUI
 
 struct NotesError: View {
-    @EnvironmentObject var state: NotesState
-    let sendEvent: (_ event: NotesVMEvents) -> Void
-    
+    @EnvironmentObject var viewmodel: NotesVM
+
     var body: some View {
         VStack {
-            NotesHeader(
-                sendEvent: sendEvent
-            )
+            NotesHeader()
             Spacer()
             NIcons(
                 type: .multiplyCircle,
@@ -27,7 +24,7 @@ struct NotesError: View {
                 NSpace.k16
             )
             RippleButton(
-                action: {sendEvent(.tryAgain)},
+                action: { viewmodel.sendEvent(.tryAgain) },
                 content: {
                     NText(
                         key: "try-again.label",
@@ -42,15 +39,13 @@ struct NotesError: View {
 
 struct NotesError_Previews: PreviewProvider {
     static var previews: some View {
-        let vm: NotesVM = .init()
-        Notes(
-            sendEvent: vm.sendEvent
-        )
-        .environmentObject(
-            NotesState(
-                screenState: .error
+        NotesError()
+            .environmentObject(
+                NotesVM(
+                    state: NotesState(
+                        screenState: .loading
+                    )
+                )
             )
-        )
     }
 }
-

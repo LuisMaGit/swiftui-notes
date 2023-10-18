@@ -1,6 +1,9 @@
 import Foundation
+import NotesCore
 
 public enum NoteDetailsEvents {
+    case onAppear(noteId: Int?, screenType: FormScreenType)
+    case goBack
     case setColor(color: NoteColor)
     case setTitle(title: String)
     case setNote(note: String)
@@ -8,35 +11,33 @@ public enum NoteDetailsEvents {
     case submit
 }
 
-public class NoteDetailsVM {
+public class NoteDetailsVM: ObservableObject {
     // state
-    public private(set) var state: NoteDetailsState
+    @Published public private(set) var state: NoteDetailsState
     // di
     private let notesSqlService: INotesService
-    private let screenType: NoteDetailsType
-    private let noteId: Int?
+    // control
+    private let snackbarService = SnackbarService.instance
+    private let navigationService = NavigationService.instance
+    private var screenType: FormScreenType = .create
+    private var noteId: Int?
     
     public init(
         state: NoteDetailsState = .init(),
-        screenType: NoteDetailsType = .create,
-        noteId: Int? = nil,
         notesSqlService: INotesService = notesServiceProvider()
     ) {
         self.state = state
-        self.screenType = screenType
-        self.noteId = noteId
         self.notesSqlService = notesSqlService
-        assert(
-            noteId == nil || screenType == .edit,
-            "noteId must be provided in edit mode"
-        )
-        initViewModel()
     }
     
     public func sendEvent(
-        event: NoteDetailsEvents
+        _ event: NoteDetailsEvents
     ) {
         switch event {
+        case let .onAppear(noteId: noteId, screenType: screenType):
+            onAppear(screenType: screenType, noteId: noteId)
+        case .goBack:
+            goBack()
         case let .setColor(color: color):
             setColor(color: color)
         case let .setTitle(title: title):
@@ -50,7 +51,20 @@ public class NoteDetailsVM {
         }
     }
     
-    private func initViewModel() {
+    private func goBack() {
+        navigationService.goTo(notesRoute: .notes)
+    }
+    
+    private func onAppear(
+        screenType: FormScreenType,
+        noteId: Int?
+    ) {
+        assert(
+            noteId == nil || screenType == .edit,
+            "noteId must be provided in edit mode"
+        )
+        self.screenType = screenType
+        self.noteId = noteId
         switch screenType {
         case .edit:
             getNoteById(noteId: noteId!)
@@ -110,7 +124,7 @@ public class NoteDetailsVM {
         switch screenType {
         case .edit:
             Task {
-                await notesSqlService.updateNote(
+                let result = await notesSqlService.updateNote(
                     note: Note(
                         id: noteId!,
                         title: state.title,
@@ -118,16 +132,32 @@ public class NoteDetailsVM {
                         color: state.color
                     )
                 )
+                
+                if case .error(message: _) = result {
+                    snackbarService.showSnackbar(.error)
+                    return
+                }
+                
+                snackbarService.showSnackbar(.noteEdited)
+                goBack()
             }
         case .create:
             Task {
-                await notesSqlService.createNote(
+                let result = await notesSqlService.createNote(
                     note: Note(
                         title: state.title,
                         content: state.note,
                         color: state.color
                     )
                 )
+                
+                if case .error(message: _) = result {
+                    snackbarService.showSnackbar(.error)
+                    return
+                }
+                
+                snackbarService.showSnackbar(.noteAdded)
+                goBack()
             }
         }
     }

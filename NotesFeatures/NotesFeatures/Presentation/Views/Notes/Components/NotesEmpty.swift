@@ -2,14 +2,11 @@ import NotesCoreUI
 import SwiftUI
 
 struct NotesEmpty: View {
-    @EnvironmentObject var state: NotesState
-    let sendEvent: (_ event: NotesVMEvents) -> Void
-    
+    @EnvironmentObject var viewmodel: NotesVM
+
     var body: some View {
         VStack {
-            NotesHeader(
-                sendEvent: sendEvent
-            )
+            NotesHeader()
             NText(
                 key: "notes.empty-result.label",
                 type: .caption,
@@ -26,14 +23,12 @@ struct NotesEmpty: View {
 
 struct NotesEmpty_Previews: PreviewProvider {
     static var previews: some View {
-        let vm: NotesVM = .init()
-        Notes(
-            sendEvent: vm.sendEvent
-        )
-        .environmentObject(
-            NotesState(
+        let vm: NotesVM = .init(
+            state: NotesState(
                 screenState: .empty
             )
         )
+        NotesEmpty()
+            .environmentObject(vm)
     }
 }

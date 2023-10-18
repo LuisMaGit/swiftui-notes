@@ -1,47 +1,30 @@
+import NotesCore
 import NotesCoreUI
 import NotesFeatures
 import SwiftUI
 
 struct ContentView: View {
-    let notesVM: NotesVM
-//    let noteDetailsVM: NoteDetailsVM
-
-    init() {
-        notesVM = NotesVM()
-//        noteDetailsVM = NoteDetailsVM(
-//            screenType: .edit,
-//            noteId: 6
-//        )
-    }
+    @StateObject var snackbarService: SnackbarService = .instance
+    @StateObject var navigationService: NavigationService = .instance
 
     var body: some View {
-        Notes(
-            sendEvent: notesVM.sendEvent
-        )
-        .environmentObject(notesVM.state)
-//        NoteDetails(
-//            sendEvent: noteDetailsVM.sendEvent
-//        )
-//        .environmentObject(noteDetailsVM.state)
+        Group {
+            switch navigationService.currentRoute {
+            case .notes:
+                Notes()
+            case .noteDetails(
+                noteId: let noteId,
+                screenType: let screenType
+            ):
+                NoteDetails(
+                    screenType: screenType,
+                    noteId: noteId
+                )
+            }
+        }
+        .popup(snackbarType: $snackbarService.type)
     }
 }
-
-//struct ContentView: View {
-//    let noteDetailsVM: NoteDetailsVM
-//
-//    init() {
-//        noteDetailsVM = NoteDetailsVM(
-//            screenType: .create
-//        )
-//    }
-//
-//    var body: some View {
-//        NoteDetails(
-//            sendEvent: noteDetailsVM.sendEvent
-//        )
-//        .environmentObject(noteDetailsVM.state)
-//    }
-//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -10,6 +10,8 @@
 		D61BF0B62AB3AA0200E206F2 /* StringManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61BF0B52AB3AA0200E206F2 /* StringManagerService.swift */; };
 		D61BF0C92AB44E5200E206F2 /* StringManagerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61BF0C82AB44E5200E206F2 /* StringManagerServiceTests.swift */; };
 		D61BF0CA2AB44E5200E206F2 /* NotesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EF46262AB05A3C00A84AB3 /* NotesCore.framework */; };
+		D629F7392ADD16EE00EFD53E /* SnackbarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629F7382ADD16EE00EFD53E /* SnackbarService.swift */; };
+		D629F73B2ADD17E000EFD53E /* SnackbarContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629F73A2ADD17E000EFD53E /* SnackbarContracts.swift */; };
 		D65EF75C2ABCDE52007400F9 /* ISqlManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF75B2ABCDE52007400F9 /* ISqlManagerService.swift */; };
 		D65EF75F2ABCDE8A007400F9 /* IFileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF75E2ABCDE8A007400F9 /* IFileManagerService.swift */; };
 		D65EF7622ABCDF1E007400F9 /* ITimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF7612ABCDF1E007400F9 /* ITimeService.swift */; };
@@ -20,6 +22,8 @@
 		D65EF76E2ABCE735007400F9 /* StringManagerServiceContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65EF76D2ABCE735007400F9 /* StringManagerServiceContracts.swift */; };
 		D669CF542AB9B213001473D9 /* DateVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669CF532AB9B213001473D9 /* DateVisualizer.swift */; };
 		D669CF592AB9BCD6001473D9 /* TimeServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D669CF582AB9BCD6001473D9 /* TimeServiceTest.swift */; };
+		D684E5EF2ADECC07003449E5 /* NavigationContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684E5EE2ADECC07003449E5 /* NavigationContracts.swift */; };
+		D684E5F12ADECCAE003449E5 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D684E5F02ADECCAE003449E5 /* NavigationService.swift */; };
 		D68D30512ABF17E400EED4BF /* SqlManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */; };
 		D68D30532ABF17E400EED4BF /* TimeServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */; };
 		D68D30552ABF17E400EED4BF /* FileManagerServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */; };
@@ -68,6 +72,8 @@
 		D61BF0BB2AB3AF5C00E206F2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D61BF0C62AB44E5200E206F2 /* NotesCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61BF0C82AB44E5200E206F2 /* StringManagerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManagerServiceTests.swift; sourceTree = "<group>"; };
+		D629F7382ADD16EE00EFD53E /* SnackbarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarService.swift; sourceTree = "<group>"; };
+		D629F73A2ADD17E000EFD53E /* SnackbarContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarContracts.swift; sourceTree = "<group>"; };
 		D65EF75B2ABCDE52007400F9 /* ISqlManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISqlManagerService.swift; sourceTree = "<group>"; };
 		D65EF75E2ABCDE8A007400F9 /* IFileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFileManagerService.swift; sourceTree = "<group>"; };
 		D65EF7612ABCDF1E007400F9 /* ITimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITimeService.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		D65EF76D2ABCE735007400F9 /* StringManagerServiceContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManagerServiceContracts.swift; sourceTree = "<group>"; };
 		D669CF532AB9B213001473D9 /* DateVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateVisualizer.swift; sourceTree = "<group>"; };
 		D669CF582AB9BCD6001473D9 /* TimeServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeServiceTest.swift; sourceTree = "<group>"; };
+		D684E5EE2ADECC07003449E5 /* NavigationContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContracts.swift; sourceTree = "<group>"; };
+		D684E5F02ADECCAE003449E5 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		D68D304C2ABF17E400EED4BF /* SqlManagerServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqlManagerServiceMock.swift; sourceTree = "<group>"; };
 		D68D304D2ABF17E400EED4BF /* TimeServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeServiceMock.swift; sourceTree = "<group>"; };
 		D68D304E2ABF17E400EED4BF /* FileManagerServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerServiceMock.swift; sourceTree = "<group>"; };
@@ -134,6 +142,15 @@
 			path = NotesCoreTests;
 			sourceTree = "<group>";
 		};
+		D629F7372ADD16D000EFD53E /* SnackbarService */ = {
+			isa = PBXGroup;
+			children = (
+				D629F7382ADD16EE00EFD53E /* SnackbarService.swift */,
+				D629F73A2ADD17E000EFD53E /* SnackbarContracts.swift */,
+			);
+			path = SnackbarService;
+			sourceTree = "<group>";
+		};
 		D65EF75D2ABCDE7B007400F9 /* FileManagerService */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +188,15 @@
 				D65EF76D2ABCE735007400F9 /* StringManagerServiceContracts.swift */,
 			);
 			path = StringManagerService;
+			sourceTree = "<group>";
+		};
+		D684E5ED2ADECBEA003449E5 /* NavigationService */ = {
+			isa = PBXGroup;
+			children = (
+				D684E5EE2ADECC07003449E5 /* NavigationContracts.swift */,
+				D684E5F02ADECCAE003449E5 /* NavigationService.swift */,
+			);
+			path = NavigationService;
 			sourceTree = "<group>";
 		};
 		D68D302E2ABF057C00EED4BF /* Mocks */ = {
@@ -238,6 +264,8 @@
 		D6EF467D2AB05FE600A84AB3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D684E5ED2ADECBEA003449E5 /* NavigationService */,
+				D629F7372ADD16D000EFD53E /* SnackbarService */,
 				D65EF76A2ABCE4C5007400F9 /* StringManagerService */,
 				D65EF7652ABCE0EF007400F9 /* PaginationService */,
 				D65EF7602ABCDF0F007400F9 /* TimeService */,
@@ -395,7 +423,9 @@
 				D68D30572ABF17E400EED4BF /* StringManagerServiceMock.swift in Sources */,
 				D65EF7622ABCDF1E007400F9 /* ITimeService.swift in Sources */,
 				D6EF46872AB062C600A84AB3 /* LoggerService.swift in Sources */,
+				D629F7392ADD16EE00EFD53E /* SnackbarService.swift in Sources */,
 				D65EF76C2ABCE4D6007400F9 /* IStringManagerService.swift in Sources */,
+				D684E5EF2ADECC07003449E5 /* NavigationContracts.swift in Sources */,
 				D6EF46902AB08BAC00A84AB3 /* DependecyLocator.swift in Sources */,
 				D65EF7642ABCDF47007400F9 /* TimeServiceContracts.swift in Sources */,
 				D65EF75F2ABCDE8A007400F9 /* IFileManagerService.swift in Sources */,
@@ -413,7 +443,9 @@
 				D65EF7692ABCE11C007400F9 /* PaginationServiceContracts.swift in Sources */,
 				D68D30592ABF17E400EED4BF /* PaginationServiceMock.swift in Sources */,
 				D65EF76E2ABCE735007400F9 /* StringManagerServiceContracts.swift in Sources */,
+				D629F73B2ADD17E000EFD53E /* SnackbarContracts.swift in Sources */,
 				D6EC3AB82AB1C78A00C34312 /* PaginationService.swift in Sources */,
+				D684E5F12ADECCAE003449E5 /* NavigationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

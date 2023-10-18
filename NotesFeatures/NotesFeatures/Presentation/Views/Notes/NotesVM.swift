@@ -2,6 +2,8 @@ import Foundation
 import NotesCore
 
 public enum NotesVMEvents {
+    case addNote
+    case onAppear
     case closeSearchMode
     case closeSelectionMode
     case deleteNotes
@@ -23,9 +25,9 @@ enum NotesQueryType {
     case search
 }
 
-public class NotesVM {
+public class NotesVM: ObservableObject {
     // state
-    public private(set) var state: NotesState
+    @Published public private(set) var state: NotesState
     // di
     private let notesSqlService: INotesService
     private let paginationService: IPaginationService
@@ -36,6 +38,8 @@ public class NotesVM {
     private let ITEMS_IN_PAGE = PAGINATION_DEF_ITEMS_IN_PAGE
     private let TIMER_DELAY = 0.5
     private var notesQueryType: NotesQueryType = .all
+    private let snackbarService = SnackbarService.instance
+    private let navigationService = NavigationService.instance
     
     public init(
         state: NotesState = .init(),
@@ -45,18 +49,16 @@ public class NotesVM {
         self.state = state
         self.notesSqlService = notesSqlService
         self.paginationService = paginationService
-        Task {
-            await queryAllNotes(
-                page: state.notes.nextPage,
-                isFirstCall: true
-            )
-        }
     }
     
     public func sendEvent(
-        event: NotesVMEvents
+        _ event: NotesVMEvents
     ) {
         switch event {
+        case .onAppear:
+            onAppear()
+        case .addNote:
+            addNote()
         case .setSearchMode:
             setSearchMode()
         case .closeSearchMode:
@@ -81,6 +83,21 @@ public class NotesVM {
             setFilter(type: type)
         case let .setFilterColor(color: color):
             setFilterColor(color: color)
+        }
+    }
+    
+    private func addNote() {
+        navigationService.goTo(
+            notesRoute: .noteDetails(screenType: .create)
+        )
+    }
+    
+    private func onAppear() {
+        Task {
+            await queryAllNotes(
+                page: state.notes.nextPage,
+                isFirstCall: true
+            )
         }
     }
     
@@ -361,7 +378,15 @@ public class NotesVM {
         if state.headerMode == .itemsSelected {
             state.notesSelectedMap[idx] = !state.notesSelectedMap[idx]!
             setSelectedNotes()
+            return
         }
+        
+        // go to details
+        navigationService.goTo(
+            notesRoute: .noteDetails(
+                noteId: state.notes.data[idx].id, screenType: .edit
+            )
+        )
     }
     
     private func onLongPressNote(idx: Int) {
@@ -415,7 +440,10 @@ public class NotesVM {
                     page: state.notes.nextPage,
                     isFirstCall: true
                 )
+                snackbarService.showSnackbar(.notesDeleted)
+                return
             }
+            snackbarService.showSnackbar(.error)
         }
     }
     

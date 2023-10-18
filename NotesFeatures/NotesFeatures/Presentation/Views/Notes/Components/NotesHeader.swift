@@ -2,11 +2,10 @@ import NotesCoreUI
 import SwiftUI
 
 struct NotesHeader: View {
-    @EnvironmentObject var state: NotesState
-    let sendEvent: (_ event: NotesVMEvents) -> Void
+    @EnvironmentObject var viewmodel: NotesVM
     
     var body: some View {
-        switch state.headerMode {
+        switch viewmodel.state.headerMode {
         case .initial:
             initialView
         case .searchbar:
@@ -42,10 +41,10 @@ struct NotesHeader: View {
             Spacer()
             NIconButton(
                 action: {
-                    sendEvent(.onTapFilter)
+                    viewmodel.sendEvent(.onTapFilter)
                 },
                 icon: NIconsType.horizontaldecrease,
-                fixedFeedBack: state.filterSelected
+                fixedFeedBack: viewmodel.state.filterSelected
             )
             .padding(
                 .trailing,
@@ -53,7 +52,7 @@ struct NotesHeader: View {
             )
             NIconButton(
                 action: {
-                    sendEvent(.setSearchMode)
+                    viewmodel.sendEvent(.setSearchMode)
                 },
                 icon: NIconsType.magnifyingglass
             )
@@ -63,11 +62,11 @@ struct NotesHeader: View {
     @ViewBuilder var searchView: some View {
         wrapper {
             NSearchField(
-                text: state.searchText,
+                text: viewmodel.state.searchText,
                 hint: "notes.searchbar.hint",
                 startFocused: true,
                 onChangeText: { value in
-                    sendEvent(.searchNotes(search: value))
+                    viewmodel.sendEvent(.searchNotes(search: value))
                 }
             )
             .padding(
@@ -76,7 +75,7 @@ struct NotesHeader: View {
             )
             NIconButton(
                 action: {
-                    sendEvent(.closeSearchMode)
+                    viewmodel.sendEvent(.closeSearchMode)
                 },
                 icon: NIconsType.xmark
             )
@@ -88,7 +87,7 @@ struct NotesHeader: View {
             // close
             NIconButton(
                 action: {
-                    sendEvent(.closeSelectionMode)
+                    viewmodel.sendEvent(.closeSelectionMode)
                 },
                 icon: NIconsType.xmark
             )
@@ -107,7 +106,7 @@ struct NotesHeader: View {
             )
             // counter
             NText(
-                text: String(state.notesSelected),
+                text: String(viewmodel.state.notesSelected),
                 font: .poppinsBlack
             )
             .padding(
@@ -118,7 +117,7 @@ struct NotesHeader: View {
             // trash can
             NIconButton(
                 action: {
-                    sendEvent(.deleteNotes)
+                    viewmodel.sendEvent(.deleteNotes)
                 },
                 icon: NIconsType.trash
             )
@@ -147,7 +146,7 @@ struct NotesHeader: View {
                         NColors.background
                     )
                 // colors filter
-                if state.filterSelectedType == .colors {
+                if viewmodel.state.filterSelectedType == .colors {
                     filterColorsView
                 }
             }
@@ -170,9 +169,9 @@ struct NotesHeader: View {
                     let type = NotesFilterType.allCases[idx]
                     ChipButton(
                         key: filterKey(type: type),
-                        selected: type == state.filterSelectedType,
+                        selected: type == viewmodel.state.filterSelectedType,
                         onTap: {
-                            sendEvent(.selectFilter(type: type))
+                            viewmodel.sendEvent(.selectFilter(type: type))
                         }
                     )
                 }
@@ -185,10 +184,10 @@ struct NotesHeader: View {
             colors: NotesColorsUtils.nColors,
             onTapColor: { idx in
                 let color = NotesColorsUtils.noteColors[idx]
-                sendEvent(.setFilterColor(color: color))
+                viewmodel.sendEvent(.setFilterColor(color: color))
             },
             selectedColor: NotesColorsUtils.noteColors.firstIndex(
-                of: state.filterColorSelected
+                of: viewmodel.state.filterColorSelected
             ) ?? 0
         )
     }
@@ -196,15 +195,15 @@ struct NotesHeader: View {
 
 struct NotesHeader_Previews: PreviewProvider {
     static var previews: some View {
-        NotesHeader(
-            sendEvent: { _ in }
-        )
-        .environmentObject(
-            NotesState(
-                headerMode: .filter,
-                filterSelected: true,
-                filterSelectedType: .colors
+        NotesHeader()
+            .environmentObject(
+                NotesVM(
+                    state: NotesState(
+                        headerMode: .filter,
+                        filterSelected: true,
+                        filterSelectedType: .colors
+                    )
+                )
             )
-        )
     }
 }

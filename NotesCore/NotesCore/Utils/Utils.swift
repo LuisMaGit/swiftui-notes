@@ -16,3 +16,8 @@ public enum BasicScreenState {
     case error
     case empty
 }
+
+public enum FormScreenType {
+    case edit
+    case create
+}

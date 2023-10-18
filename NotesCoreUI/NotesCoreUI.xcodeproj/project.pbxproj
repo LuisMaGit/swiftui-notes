@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D6126FE72AC5DD35005CE9E3 /* NotesCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */; };
 		D6126FE82AC5DD35005CE9E3 /* NotesCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D629F73F2ADD1D9300EFD53E /* NSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629F73E2ADD1D9300EFD53E /* NSnackbar.swift */; };
+		D629F7412ADD20EE00EFD53E /* NSnackbarHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629F7402ADD20EE00EFD53E /* NSnackbarHandler.swift */; };
 		D631C9292AD715EF006FDBB6 /* NTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631C9282AD715EF006FDBB6 /* NTextField.swift */; };
 		D631C92B2AD71600006FDBB6 /* NTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631C92A2AD71600006FDBB6 /* NTextEditor.swift */; };
 		D631C92D2AD7160E006FDBB6 /* NEditorHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		D6126FE62AC5DD35005CE9E3 /* NotesCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D629F73E2ADD1D9300EFD53E /* NSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSnackbar.swift; sourceTree = "<group>"; };
+		D629F7402ADD20EE00EFD53E /* NSnackbarHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSnackbarHandler.swift; sourceTree = "<group>"; };
 		D631C9282AD715EF006FDBB6 /* NTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTextField.swift; sourceTree = "<group>"; };
 		D631C92A2AD71600006FDBB6 /* NTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTextEditor.swift; sourceTree = "<group>"; };
 		D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEditorHint.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				D631C92A2AD71600006FDBB6 /* NTextEditor.swift */,
 				D631C92C2AD7160E006FDBB6 /* NEditorHint.swift */,
 				D671707D2ADB382C0043B419 /* FloatingCircleButton.swift */,
+				D629F73E2ADD1D9300EFD53E /* NSnackbar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 		D6E7B6EF2A98F641008706F8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D629F7402ADD20EE00EFD53E /* NSnackbarHandler.swift */,
 				D6E7B6F02A98F66C008706F8 /* CoreUIUtils.swift */,
 				D6867E8D2ACB09970006C5B6 /* ExtensionUI.swift */,
 			);
@@ -272,6 +278,7 @@
 				D6E7B6EC2A98F53A008706F8 /* NoteCard.swift in Sources */,
 				D64D628D2AA2116600D310D6 /* NSearchField.swift in Sources */,
 				D64D62862AA1E91B00D310D6 /* NIcons.swift in Sources */,
+				D629F73F2ADD1D9300EFD53E /* NSnackbar.swift in Sources */,
 				D64868B82A9E3BB6005D9A7E /* NConstants.swift in Sources */,
 				D68D1EBC2AA6263000A864BA /* ChipButton.swift in Sources */,
 				D64D627E2A9F34DC00D310D6 /* NotesCoreUI.swift in Sources */,
@@ -287,6 +294,7 @@
 				D6B0B0EB2AD5B21500E6E454 /* ColorSelector.swift in Sources */,
 				D631C92D2AD7160E006FDBB6 /* NEditorHint.swift in Sources */,
 				D64868B62A9E3806005D9A7E /* NText.swift in Sources */,
+				D629F7412ADD20EE00EFD53E /* NSnackbarHandler.swift in Sources */,
 				D699E3E62AD7108500FE6F32 /* NIconButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

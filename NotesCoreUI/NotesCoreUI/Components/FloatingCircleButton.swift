@@ -3,9 +3,14 @@ import SwiftUI
 
 public struct FloatingCircleButton: View {
     let onTap: () -> Void
-    
-    public init(onTap: @escaping () -> Void) {
+    let icon: NIconsType
+
+    public init(
+        onTap: @escaping () -> Void,
+        icon: NIconsType
+    ) {
         self.onTap = onTap
+        self.icon = icon
     }
 
     public var body: some View {
@@ -18,7 +23,7 @@ public struct FloatingCircleButton: View {
                     .overlay(
                         content: {
                             NIcons(
-                                type: .checkmark,
+                                type: icon,
                                 color: NColors.backgroundInverseDark,
                                 size: 25
                             )
@@ -33,7 +38,8 @@ public struct FloatingCircleButton: View {
 struct FloatingCircleButton_Previews: PreviewProvider {
     static var previews: some View {
         FloatingCircleButton(
-            onTap: {}
+            onTap: {},
+            icon: .checkmark
         )
     }
 }

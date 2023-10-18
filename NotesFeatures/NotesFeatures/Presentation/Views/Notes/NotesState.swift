@@ -1,17 +1,16 @@
 import NotesCore
-import SwiftUI
 
-public class NotesState: ObservableObject {
-    @Published var headerMode: NotesHeaderMode
-    @Published var filterSelected: Bool
-    @Published var filterSelectedType: NotesFilterType
-    @Published var filterColorSelected: NoteColor
-    @Published var notes: Pagination<Note>
-    @Published var notesSelected: Int
-    @Published var notesSelectedMap: [Int: Bool]
-    @Published var screenState: BasicScreenState
-    @Published var showLoadingMore: Bool
-    @Published var searchText: String
+public struct NotesState {
+    var headerMode: NotesHeaderMode
+    var filterSelected: Bool
+    var filterSelectedType: NotesFilterType
+    var filterColorSelected: NoteColor
+    var notes: Pagination<Note>
+    var notesSelected: Int
+    var notesSelectedMap: [Int: Bool]
+    var screenState: BasicScreenState
+    var showLoadingMore: Bool
+    var searchText: String
 
     public init(
         headerMode: NotesHeaderMode = .initial,

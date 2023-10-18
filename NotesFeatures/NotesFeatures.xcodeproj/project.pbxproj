@@ -82,6 +82,7 @@
 		D65EF7422ABAE62C007400F9 /* NotesFeaturesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesFeaturesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65EF7442ABAE62C007400F9 /* NotesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesServiceTests.swift; sourceTree = "<group>"; };
 		D65EF76F2ABCE86C007400F9 /* INotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INotesService.swift; sourceTree = "<group>"; };
+		D6655F5B2ADEC9BD00766F49 /* NotesRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotesRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67170772AD9A2A30043B419 /* NoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteError.swift; sourceTree = "<group>"; };
 		D67170792AD9A46E0043B419 /* NoteLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLoading.swift; sourceTree = "<group>"; };
 		D671707B2AD9A4B10043B419 /* NoteSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSuccess.swift; sourceTree = "<group>"; };
@@ -278,6 +279,7 @@
 		D6EF466F2AB05C6300A84AB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6655F5B2ADEC9BD00766F49 /* NotesRouter.framework */,
 				D6EF46772AB05FBF00A84AB3 /* NotesCore.framework */,
 				D6EF46702AB05C6400A84AB3 /* NotesCoreUI.framework */,
 			);

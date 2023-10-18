@@ -4,15 +4,18 @@ import SwiftUI
 public struct NIconButton: View {
     let action: () -> Void
     let icon: NIconsType
+    let iconColor: Color?
     let fixedFeedBack: Bool
 
     public init(
         action: @escaping () -> Void,
         icon: NIconsType,
+        iconColor: Color? = nil,
         fixedFeedBack: Bool = false
     ) {
         self.action = action
         self.icon = icon
+        self.iconColor = iconColor
         self.fixedFeedBack = fixedFeedBack
     }
 
@@ -21,7 +24,17 @@ public struct NIconButton: View {
             fixedFeedback: fixedFeedBack,
             action: action,
             content: {
-                NIcons(type: icon)
+                if let iconColor = iconColor {
+                    NIcons(
+                        type: icon,
+                        color: iconColor
+                    )
+                }
+                else {
+                    NIcons(
+                        type: icon
+                    )
+                }
             }
         )
     }
