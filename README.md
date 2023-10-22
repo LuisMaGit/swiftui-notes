@@ -29,8 +29,8 @@ No packages used
 * Pagination
 * Manual constructor DI
 * Interface segration
-* Internationalization (Englis/Spanish)
-* Light/Dark Theme
+* Internationalization (English/Spanish)
+* Light/Dark themes
 * SwiftUI custom components and custom paths
 
 ## Unit tests
