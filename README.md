@@ -34,7 +34,7 @@ No packages used
 * SwiftUI custom components and custom paths
 
 ## Unit tests
-Crucial logic tested in the <code>NotesCore</code> and <code>NotesFeatures</code> Modules
+Crucial logic tested in the <code>NotesCore</code> and <code>NotesFeatures</code> modules.
 
 <div>
   <img width="328" alt="image" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/c8a2bc94-65e3-4ff7-8eec-9daf2cb5df52">
