@@ -4,18 +4,19 @@
 </br>
 
 <div>
-    <img src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/5f44688e-ffbc-4c2e-a130-c633db5ee854"  width="200" height="400">
-    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/54c3c443-66c7-4f7b-bced-c45b1184887d">
-    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/93744945-d3b7-4fd5-bc47-881b3d6205f0">
-    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/891bf181-725d-484a-91ac-3787afacf40a">
-    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/d655792e-f4ba-41df-bb1c-71bd07561e6e">
-    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/8726111f-e6d2-4f50-a032-5b91f6e918e1"> 
-</div>
+    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/cc0c8a6f-5ac8-4420-a587-dd74d3d5201b">
+    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/29a0fd68-89d4-4d27-abc5-2133df1f2b2f">
+    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/098e29eb-a1b8-4006-b734-53d883bac9c4">
+    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/a5379bb9-5733-4631-8d24-aebd50380cd5">
+    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/c2dd97b6-6ab8-49a9-91a1-81e7249c3a63">
+    <img width="200" height="400" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/687dd269-c6c8-4390-b327-788feb91dadd">
+</div> 
 
 </br>
 
 ## Architechture
-<img width="790" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/c0506709-0fab-4010-bec9-4d70aca8903d">
+
+<img width="790" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/0a994ba1-15bf-4a95-8db9-7124bf6a606e">
 
 </br>
 
@@ -37,7 +38,7 @@ No packages used
 Crucial logic tested in the <code>NotesCore</code> and <code>NotesFeatures</code> modules.
 
 <div>
-  <img width="328" alt="image" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/c8a2bc94-65e3-4ff7-8eec-9daf2cb5df52">
+ <img width="333" src="https://github.com/LuisMaGit/swiftui-notes/assets/70621340/d5f79555-2f8f-421e-9f90-cb1f43cae7c6">
 </div>
 
 
