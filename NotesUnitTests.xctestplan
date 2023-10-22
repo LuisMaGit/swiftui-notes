@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "4998E329-5C60-4A61-94EA-612D313F98C1",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..\/NotesCore\/NotesCore.xcodeproj",
+        "identifier" : "D61BF0C52AB44E5200E206F2",
+        "name" : "NotesCoreTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/NotesFeatures\/NotesFeatures.xcodeproj",
+        "identifier" : "D65EF7412ABAE62C007400F9",
+        "name" : "NotesFeaturesTests"
+      }
+    }
+  ],
+  "version" : 1
+}

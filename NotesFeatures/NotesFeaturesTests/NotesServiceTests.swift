@@ -124,7 +124,7 @@ final class NotesServiceTest: XCTestCase {
                         content: "Content 1",
                         shortContent: shortContent,
                         color: NoteColor.lightGreen,
-                        creationDate: nil
+                        lastEditDate: nil
                     ),
                     Note(
                         id: 2,
@@ -132,7 +132,7 @@ final class NotesServiceTest: XCTestCase {
                         content: "Content 2",
                         shortContent: shortContent,
                         color: Note.DEFAULT_COLOR,
-                        creationDate: nil
+                        lastEditDate: nil
                     ),
                     Note(
                         id: 3,
@@ -140,7 +140,7 @@ final class NotesServiceTest: XCTestCase {
                         content: "Content 3",
                         shortContent: shortContent,
                         color: NoteColor.redPink,
-                        creationDate: nil
+                        lastEditDate: nil
                     ),
                 ]
             )
