@@ -1,6 +1,6 @@
 # The "obvious" SwiftUI Notes App
 
-#### Multimodule and zero packages Swift/SwiftUI iOS Notes app implementing direct CRUD operations to an SQLite3 db using the C Api.
+#### Minimal multimodule/zero packages Swift/SwiftUI iOS Notes app implementing direct CRUD operations to a SQLite3 db using the C Api.
 </br>
 
 <div>
